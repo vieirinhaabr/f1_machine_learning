@@ -3,12 +3,15 @@ import requests
 import os
 
 class extract_as_csv(object):
-    def extract_f1_json(url):
-        page = requests.get(url)
-        json_file = page.json()
+    def extract_f1_json(url__f1_tv, url__drivers):
+        page = requests.get(url__f1_tv)
+        json__f1_tv = page.json()
+
+        page = requests.get(url__drivers)
+        json__drivers = page.json()
 
         def db_name():
-            j_temp = json_file['path']
+            j_temp = json__f1_tv['path']
             j_temp = j_temp[5:]
             csv_name = ''
 
@@ -47,8 +50,8 @@ class extract_as_csv(object):
 
             return Time, Something
 
-        def weather(json_file):
-            j_temp = json_file['Weather']
+        def weather(json__f1_tv):
+            j_temp = json__f1_tv['Weather']
             j_temp = j_temp['graph']
             j_temp = j_temp['data']
 
@@ -161,8 +164,8 @@ class extract_as_csv(object):
             air_pressure(j_temp)
             wind_direction(j_temp)
 
-        def current_drivers(json_file):
-            j_temp = json_file['init']
+        def current_drivers(json__f1_tv):
+            j_temp = json__f1_tv['init']
             j_temp = j_temp['data']
             j_temp = j_temp['Drivers']
 
@@ -190,8 +193,8 @@ class extract_as_csv(object):
 
             return Driver_Initials
 
-        def count_laps(json_file):
-            j_temp = json_file['free']
+        def count_laps(json__f1_tv):
+            j_temp = json__f1_tv['free']
             j_temp = j_temp['data']
 
             Lap = []
@@ -203,8 +206,8 @@ class extract_as_csv(object):
 
             return Lap
 
-        def drivers_performance_points(json_file, Driver_Initials, Laps):
-            j_temp = json_file['Scores']
+        def drivers_performance_points(json__f1_tv, Driver_Initials, Laps):
+            j_temp = json__f1_tv['Scores']
             j_temp = j_temp['graph']
             j_temp = j_temp['Performance']
 
@@ -237,9 +240,10 @@ class extract_as_csv(object):
 
             print(Driver_Performance_Data)
 
-        weather(json_file)
-        Driver_Initials = current_drivers(json_file)
-        Laps = count_laps(json_file)
-        drivers_performance_points(json_file, Driver_Initials, Laps)
+        weather(json__f1_tv)
+        Driver_Initials = current_drivers(json__f1_tv)
+        Laps = count_laps(json__f1_tv)
+        drivers_performance_points(json__f1_tv, Driver_Initials, Laps)
 
-    extract_f1_json('https://livetiming.formula1.com/static/2019/2019-12-01_Abu_Dhabi_Grand_Prix/2019-12-01_Race/SPFeed.json')
+    extract_f1_json('https://livetiming.formula1.com/static/2019/2019-12-01_Abu_Dhabi_Grand_Prix/2019-12-01_Race/SPFeed.json',
+                    'http://ergast.com/api/f1/2019/drivers.json')
