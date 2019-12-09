@@ -7,6 +7,7 @@ class extract_as_csv(object):
         page = requests.get(url__f1_tv)
         json__f1_tv = page.json()
 
+        # ergast data
         page = requests.get(url__drivers)
         json__drivers = page.json()
 
@@ -206,6 +207,32 @@ class extract_as_csv(object):
 
             return Lap
 
+        def track_status(json__f1_tv, Laps):
+            j_temp = json__f1_tv['Scores']
+            j_temp = j_temp['graph']
+            j_temp = j_temp['TrackStatus']
+
+            Track_Status = []
+
+            i = 0
+            for lap in j_temp:
+                if i == 1:
+                    if lap == '':
+                        lap = None
+                    Track_Status.append(lap)
+                    i = i - 1
+                else:
+                    i = i + 1
+
+            Track_Status_Dict = {"Lap": Laps, "Status": Track_Status[1:Laps.__len__()+1]}
+
+            Track_Status_Data = pd.DataFrame(data=Track_Status_Dict)
+            Track_Status_Data = Track_Status_Data.set_index('Lap')
+
+            path_db = generate_csv_name('Track_Status')
+
+            Track_Status_Data.to_csv(path_db)
+
         def drivers_performance_points(json__f1_tv, Driver_Initials, Laps):
             j_temp = json__f1_tv['Scores']
             j_temp = j_temp['graph']
@@ -238,12 +265,42 @@ class extract_as_csv(object):
 
             Driver_Performance_Data.to_csv(path_db)
 
-            print(Driver_Performance_Data)
+        def drivers_positions_by_lap(json__f1_tv, Driver_Initials, Laps):
+            j_temp = json__f1_tv['LapPos']
+            j_temp = j_temp['graph']
+            Drivers_Gap = j_temp['data']
+
+            Driver_Positions_Dict = {}
+
+            Driver_Positions_Dict['Lap'] = Laps
+
+            for Driver in Driver_Initials:
+                i = 0
+                Driver_Positions = []
+
+                for lap in Drivers_Gap['p'+Driver]:
+                    if i == 1:
+                        Driver_Positions.append(lap)
+                        i = i - 1
+                    else:
+                        i = i + 1
+
+                Driver_Positions_Dict[Driver] = Driver_Positions[1:Laps.__len__()+1]
+                print(Driver_Positions.__len__())
+
+            Driver_Positions_Data = pd.DataFrame(data=Driver_Positions_Dict)
+            Driver_Positions_Data = Driver_Positions_Data.set_index('Lap')
+
+            path_db = generate_csv_name('Drivers_Positions')
+
+            Driver_Positions_Data.to_csv(path_db)
 
         weather(json__f1_tv)
         Driver_Initials = current_drivers(json__f1_tv)
         Laps = count_laps(json__f1_tv)
+        track_status(json__f1_tv, Laps)
         drivers_performance_points(json__f1_tv, Driver_Initials, Laps)
+        drivers_positions_by_lap(json__f1_tv, Driver_Initials, Laps)
 
     extract_f1_json('https://livetiming.formula1.com/static/2019/2019-12-01_Abu_Dhabi_Grand_Prix/2019-12-01_Race/SPFeed.json',
                     'http://ergast.com/api/f1/2019/drivers.json')
