@@ -170,29 +170,76 @@ class extract_as_csv(object):
             Driver_Initials = []
             Driver_Team = []
             Driver_Num = []
+            Team_Color_Picker = []
 
             for Driver in j_temp:
                 Driver_Name.append(Driver['FirstName'] + ' ' + Driver['Name'])
                 Driver_Initials.append(Driver['Initials'])
                 Driver_Team.append(Driver['Team'])
                 Driver_Num.append(Driver['Num'])
+                Team_Color_Picker.append(Driver['Color'])
 
-            print(Driver_Initials)
+            Current_Drivers = {"Number": Driver_Num, "Driver Name": Driver_Name, "Driver Initials": Driver_Initials, "Driver Team": Driver_Team, "Color": Team_Color_Picker}
+
+            Current_Drivers_Data = pd.DataFrame(data=Current_Drivers)
+            Current_Drivers_Data = Current_Drivers_Data.set_index('Number')
+
+            path_db = generate_csv_name('Drivers')
+
+            Current_Drivers_Data.to_csv(path_db)
 
             return Driver_Initials
 
-        def drivers_performance_points(json_file, Driver_Initials):
+        def count_laps(json_file):
+            j_temp = json_file['free']
+            j_temp = j_temp['data']
+
+            Lap = []
+
+            i = 1
+            while i <= j_temp['L']:
+                Lap.append(i)
+                i = i + 1
+
+            return Lap
+
+        def drivers_performance_points(json_file, Driver_Initials, Laps):
             j_temp = json_file['Scores']
             j_temp = j_temp['graph']
             j_temp = j_temp['Performance']
 
-            for key in j_temp:
-                print(key)
-                for value in key:
-                    print(value)
+            Driver_Performance = {}
+
+            Driver_Performance['Lap'] = Laps
+
+            for Driver in Driver_Initials:
+                i = 0
+                Performance_Gap = []
+
+                for Performance in j_temp['p'+Driver]:
+                    if i == 0:
+                        i = i + 1
+                    else:
+                        Performance_Gap.append(Performance)
+                        i = i - 1
+
+                while Performance_Gap.__len__() < Laps.__len__():
+                    Performance_Gap.append(None)
+
+                Driver_Performance[Driver] = Performance_Gap
+
+            Driver_Performance_Data = pd.DataFrame(data=Driver_Performance)
+            Driver_Performance_Data = Driver_Performance_Data.set_index('Lap')
+
+            path_db = generate_csv_name('Drivers_Performance')
+
+            Driver_Performance_Data.to_csv(path_db)
+
+            print(Driver_Performance_Data)
 
         weather(json_file)
         Driver_Initials = current_drivers(json_file)
-        #drivers_performance_points(json_file, Driver_Initials)
+        Laps = count_laps(json_file)
+        drivers_performance_points(json_file, Driver_Initials, Laps)
 
     extract_f1_json('https://livetiming.formula1.com/static/2019/2019-12-01_Abu_Dhabi_Grand_Prix/2019-12-01_Race/SPFeed.json')
