@@ -1,10 +1,12 @@
 import pandas as pd
 import requests
 import datetime
+from unidecode import unidecode as UnicodeFormatter
 import os
+import path_configuration
 
 
-class Circuits_Info(object):
+class GrandPrix_Info(object):
 
     def att_circuits_list():
 
@@ -20,10 +22,11 @@ class Circuits_Info(object):
 
             return url_list
 
-        #url_list = build_url()
-        url_list = ["https://ergast.com/api/f1/2019.json"]
+        url_list = build_url()
+        Path = path_configuration.Path()
 
         for url in url_list:
+            Season = 0
             Round = []
             GrandPrix = []
             CircuitID = []
@@ -39,20 +42,21 @@ class Circuits_Info(object):
             circuits_list = j_temp['Races']
 
             for circuit in circuits_list:
+                Season = circuit['season']
                 Round.append(circuit['round'])
-                GrandPrix.append(circuit['raceName'].replace(' ', '_'))
-                CircuitID.append(circuit['Circuit']['circuitId'])
-                CircuitName.append(circuit['Circuit']['circuitName'])
-                City.append(circuit['Circuit']['Location']['locality'])
-                Country.append(circuit['Circuit']['Location']['country'])
+                GrandPrix.append(UnicodeFormatter(circuit['raceName'].replace(' ', '_')))
+                CircuitID.append(UnicodeFormatter(circuit['Circuit']['circuitId']))
+                CircuitName.append(UnicodeFormatter(circuit['Circuit']['circuitName']))
+                City.append(UnicodeFormatter(circuit['Circuit']['Location']['locality']))
+                Country.append(UnicodeFormatter(circuit['Circuit']['Location']['country']))
                 Date.append(circuit['date'])
 
             Circuit_Data = {'Round': Round, 'Grand Prix': GrandPrix, 'Circuit ID': CircuitID, 'Circuit Name': CircuitName, 'City': City,
                             'Country': Country, 'Date': Date}
             Circuit_DF = pd.DataFrame(data=Circuit_Data)
             Circuit_DF = Circuit_DF.set_index('Round')
-            print(Circuit_DF)
 
-
+            path = Path.season_path(Season)
+            Circuit_DF.to_csv(path)
 
     att_circuits_list()

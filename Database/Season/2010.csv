@@ -1,0 +1,20 @@
+Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Date
+1,Bahrain_Grand_Prix,bahrain,Bahrain International Circuit,Sakhir,Bahrain,2010-03-14
+2,Australian_Grand_Prix,albert_park,Albert Park Grand Prix Circuit,Melbourne,Australia,2010-03-28
+3,Malaysian_Grand_Prix,sepang,Sepang International Circuit,Kuala Lumpur,Malaysia,2010-04-04
+4,Chinese_Grand_Prix,shanghai,Shanghai International Circuit,Shanghai,China,2010-04-18
+5,Spanish_Grand_Prix,catalunya,Circuit de Barcelona-Catalunya,Montmelo,Spain,2010-05-09
+6,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,2010-05-16
+7,Turkish_Grand_Prix,istanbul,Istanbul Park,Istanbul,Turkey,2010-05-30
+8,Canadian_Grand_Prix,villeneuve,Circuit Gilles Villeneuve,Montreal,Canada,2010-06-13
+9,European_Grand_Prix,valencia,Valencia Street Circuit,Valencia,Spain,2010-06-27
+10,British_Grand_Prix,silverstone,Silverstone Circuit,Silverstone,UK,2010-07-11
+11,German_Grand_Prix,hockenheimring,Hockenheimring,Hockenheim,Germany,2010-07-25
+12,Hungarian_Grand_Prix,hungaroring,Hungaroring,Budapest,Hungary,2010-08-01
+13,Belgian_Grand_Prix,spa,Circuit de Spa-Francorchamps,Spa,Belgium,2010-08-29
+14,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,2010-09-12
+15,Singapore_Grand_Prix,marina_bay,Marina Bay Street Circuit,Marina Bay,Singapore,2010-09-26
+16,Japanese_Grand_Prix,suzuka,Suzuka Circuit,Suzuka,Japan,2010-10-10
+17,Korean_Grand_Prix,yeongam,Korean International Circuit,Yeongam County,Korea,2010-10-24
+18,Brazilian_Grand_Prix,interlagos,Autodromo Jose Carlos Pace,Sao Paulo,Brazil,2010-11-07
+19,Abu_Dhabi_Grand_Prix,yas_marina,Yas Marina Circuit,Abu Dhabi,UAE,2010-11-14
