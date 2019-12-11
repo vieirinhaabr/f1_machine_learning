@@ -265,6 +265,132 @@ class extract_as_csv(object):
 
             Driver_Performance_Data.to_csv(path_db)
 
+        def race_result(json__f1_tv, Driver_Initials):
+            j_temp = json__f1_tv['opt']
+            j_temp = j_temp['data']
+            j_temp = j_temp['DR']
+
+            Race_Result = {}
+
+            i = 0
+            for item in j_temp:
+                for position in item['OC']:
+                    Race_Result[Driver_Initials[i]] = position
+                    i = i + 1
+
+            return Race_Result
+
+        def best__(json__f1_tv, Driver_Initials):
+            j_temp = json__f1_tv['best']
+            j_temp = j_temp['data']
+            j_temp = j_temp['DR']
+
+            Lap_Times = []
+            Lap = []
+            Rank = []
+            Sector_1 = []
+            Position_Sector_1 = []
+            Sector_2 = []
+            Position_Sector_2 = []
+            Sector_3 = []
+            Position_Sector_3 = []
+            Highest_Speed_Sector_1 = []
+            Position_Speed_Sector_1 = []
+            Highest_Speed_Sector_2 = []
+            Position_Speed_Sector_2 = []
+            Highest_Speed_Sector_3 = []
+            Position_Speed_Sector_3 = []
+
+            for item in j_temp:
+                i = 0
+                for content in item['B']:
+                    if i == 1:
+                        Lap_Times.append(content)
+                    elif i == 2:
+                        Lap.append(content)
+                    elif i == 3:
+                        Rank.append(content)
+                    elif i == 4:
+                        Sector_1.append(content)
+                    elif i == 6:
+                        Position_Sector_1.append(content)
+                    elif i == 7:
+                        Sector_2.append(content)
+                    elif i == 9:
+                        Position_Sector_2.append(content)
+                    elif i == 10:
+                        Sector_3.append(content)
+                    elif i == 12:
+                        Position_Sector_3.append(content)
+                    elif i == 13:
+                        Highest_Speed_Sector_1.append(content)
+                    elif i == 15:
+                        Position_Speed_Sector_1.append(content)
+                    elif i == 16:
+                        Highest_Speed_Sector_2.append(content)
+                    elif i == 18:
+                        Position_Speed_Sector_2.append(content)
+                    elif i == 19:
+                        Highest_Speed_Sector_3.append(content)
+                    elif i == 21:
+                        Position_Speed_Sector_3.append(content)
+                    i = i + 1
+
+            DataFrame = {'Ranking': Rank,
+                         'Driver': Driver_Initials,
+                         'Corresponding Lap': Lap,
+                         'Lap Time': Lap_Times}
+
+            DataFrame = pd.DataFrame(data=DataFrame)
+            DataFrame = DataFrame.set_index('Ranking')
+            DataFrame = DataFrame.sort_values('Ranking')
+            path_db = generate_csv_name('Fastest_Laps')
+            DataFrame.to_csv(path_db)
+
+            def get_dataframe_time(Ranking, Time):
+                DF = {'Ranking': Ranking,
+                      'Driver': Driver_Initials,
+                      'Fastest Time by Sector': Time}
+                DF = pd.DataFrame(data=DF)
+                DF = DF.set_index('Ranking')
+                DF = DF.sort_values('Ranking')
+
+                return DF
+
+            DataFrame = get_dataframe_time(Position_Sector_1, Sector_1)
+            path_db = generate_csv_name('Fastest_S1')
+            DataFrame.to_csv(path_db)
+
+            DataFrame = get_dataframe_time(Position_Sector_2, Sector_2)
+            path_db = generate_csv_name('Fastest_S2')
+            DataFrame.to_csv(path_db)
+
+            DataFrame = get_dataframe_time(Position_Sector_3, Sector_3)
+            path_db = generate_csv_name('Fastest_S3')
+            DataFrame.to_csv(path_db)
+
+            def get_dataframe_speed(Ranking, Speed):
+                DF = {'Ranking': Ranking,
+                      'Driver': Driver_Initials,
+                      'Fastest Time by Sector': Speed}
+                DF = pd.DataFrame(data=DF)
+                DF = DF.set_index('Ranking')
+                DF = DF.sort_values('Ranking')
+
+                return DF
+
+            DataFrame = get_dataframe_speed(Position_Speed_Sector_1, Highest_Speed_Sector_1)
+            path_db = generate_csv_name('Highest_Speed_S1')
+            DataFrame.to_csv(path_db)
+
+            DataFrame = get_dataframe_speed(Position_Speed_Sector_2, Highest_Speed_Sector_2)
+            path_db = generate_csv_name('Highest_Speed_S2')
+            DataFrame.to_csv(path_db)
+
+            DataFrame = get_dataframe_speed(Position_Speed_Sector_3, Highest_Speed_Sector_3)
+            path_db = generate_csv_name('Highest_Speed_S3')
+            DataFrame.to_csv(path_db)
+
         def drivers_positions_by_lap(json__f1_tv, Driver_Initials, Laps):
             j_temp = json__f1_tv['LapPos']
             j_temp = j_temp['graph']
@@ -285,22 +411,26 @@ class extract_as_csv(object):
                     else:
                         i = i + 1
 
-                Driver_Positions_Dict[Driver] = Driver_Positions[1:Laps.__len__()+1]
+                Driver_Positions_Dict[Driver] = Driver_Positions[1:Laps.__len__()]
                 print(Driver_Positions.__len__())
+                print('LAPS LENGHT: ', Laps.__len__())
+                print(Laps)
 
-            Driver_Positions_Data = pd.DataFrame(data=Driver_Positions_Dict)
-            Driver_Positions_Data = Driver_Positions_Data.set_index('Lap')
+            #Driver_Positions_Data = pd.DataFrame(data=Driver_Positions_Dict)
+            #Driver_Positions_Data = Driver_Positions_Data.set_index('Lap')
 
-            path_db = generate_csv_name('Drivers_Positions')
+            #path_db = generate_csv_name('Drivers_Positions')
 
-            Driver_Positions_Data.to_csv(path_db)
+            #Driver_Positions_Data.to_csv(path_db)
 
         weather(json__f1_tv)
         Driver_Initials = current_drivers(json__f1_tv)
         Laps = count_laps(json__f1_tv)
         track_status(json__f1_tv, Laps)
         drivers_performance_points(json__f1_tv, Driver_Initials, Laps)
-        drivers_positions_by_lap(json__f1_tv, Driver_Initials, Laps)
+        Result = race_result(json__f1_tv, Driver_Initials)
+        best__(json__f1_tv, Driver_Initials)
+        #drivers_positions_by_lap(json__f1_tv, Driver_Initials, Laps)
 
     extract_f1_json('https://livetiming.formula1.com/static/2019/2019-12-01_Abu_Dhabi_Grand_Prix/2019-12-01_Race/SPFeed.json',
                     'http://ergast.com/api/f1/2019/drivers.json')
