@@ -26,13 +26,13 @@ class extract_as_csv(object):
         csv_name = db_name()
 
         def create_path():
-            if not os.path.exists('Database/'+csv_name):
-                os.makedirs('Database/'+csv_name)
+            if not os.path.exists('Database/GrandPrix/'+csv_name):
+                os.makedirs('Database/GrandPrix/'+csv_name)
 
         create_path()
 
         def generate_csv_name(csv_type):
-            path_db = 'Database/' + csv_name + '/' + csv_name + '-' + csv_type + '.csv'
+            path_db = 'Database/GrandPrix/' + csv_name + '/' + csv_name + '-' + csv_type + '.csv'
 
             return path_db
 
@@ -300,6 +300,8 @@ class extract_as_csv(object):
             Position_Speed_Sector_2 = []
             Highest_Speed_Sector_3 = []
             Position_Speed_Sector_3 = []
+            SpeedTrap = []
+            Position_SpeedTrap = []
 
             for item in j_temp:
                 i = 0
