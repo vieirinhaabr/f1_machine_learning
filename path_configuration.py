@@ -27,3 +27,12 @@ class Path(object):
     def season_path(self, name):
         Path = self.Database + self.Season + name + '.csv'
         return Path
+
+    def get_grandprix_path(self):
+        return self.Database + self.GrandPrix
+
+    def get_config_path(self):
+        return self.Database + self.Config
+
+    def get_season_path(self):
+        return self.Database + self.Season

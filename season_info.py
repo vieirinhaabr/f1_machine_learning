@@ -12,7 +12,7 @@ import progress_calculator
 
 
 class Season_Info(object):
-    def season(self, year_to_find=None):
+    def import_seasons(self, year_to_find=None):
         Url = url_configuration.Url_builder()
         Path = path_configuration.Path()
 

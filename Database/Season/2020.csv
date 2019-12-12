@@ -1,0 +1,23 @@
+Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Date
+1,Australian_Grand_Prix,albert_park,Albert Park Grand Prix Circuit,Melbourne,Australia,2020-03-15
+2,Bahrain_Grand_Prix,bahrain,Bahrain International Circuit,Sakhir,Bahrain,2020-03-22
+3,Vietnamese_Grand_Prix,hanoi,Hanoi Street Circuit,Hanoi,Vietnam,2020-04-05
+4,Chinese_Grand_Prix,shanghai,Shanghai International Circuit,Shanghai,China,2020-04-19
+5,Dutch_Grand_Prix,zandvoort,Circuit Park Zandvoort,Zandvoort,Netherlands,2020-05-03
+6,Spanish_Grand_Prix,catalunya,Circuit de Barcelona-Catalunya,Montmelo,Spain,2020-05-10
+7,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,2020-05-24
+8,Azerbaijan_Grand_Prix,BAK,Baku City Circuit,Baku,Azerbaijan,2020-06-07
+9,Canadian_Grand_Prix,villeneuve,Circuit Gilles Villeneuve,Montreal,Canada,2020-06-14
+10,French_Grand_Prix,ricard,Circuit Paul Ricard,Le Castellet,France,2020-06-28
+11,Austrian_Grand_Prix,red_bull_ring,Red Bull Ring,Spielburg,Austria,2020-07-05
+12,British_Grand_Prix,silverstone,Silverstone Circuit,Silverstone,UK,2020-07-19
+13,Hungarian_Grand_Prix,hungaroring,Hungaroring,Budapest,Hungary,2020-08-02
+14,Belgian_Grand_Prix,spa,Circuit de Spa-Francorchamps,Spa,Belgium,2020-08-30
+15,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,2020-09-06
+16,Singapore_Grand_Prix,marina_bay,Marina Bay Street Circuit,Marina Bay,Singapore,2020-09-20
+17,Russian_Grand_Prix,sochi,Sochi Autodrom,Sochi,Russia,2020-09-27
+18,Japanese_Grand_Prix,suzuka,Suzuka Circuit,Suzuka,Japan,2020-10-11
+19,United_States_Grand_Prix,americas,Circuit of the Americas,Austin,USA,2020-10-25
+20,Mexico_City_Grand_Prix,rodriguez,Autodromo Hermanos Rodriguez,Mexico City,Mexico,2020-11-01
+21,Brazilian_Grand_Prix,interlagos,Autodromo Jose Carlos Pace,Sao Paulo,Brazil,2020-11-15
+22,Abu_Dhabi_Grand_Prix,yas_marina,Yas Marina Circuit,Abu Dhabi,UAE,2020-11-29

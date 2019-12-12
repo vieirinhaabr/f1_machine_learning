@@ -45,3 +45,6 @@ class Url_builder(object):
             return season_list(year)
         else:
             print('ERROR ON URL CONFIGURATION')
+
+    def url_driver(self, round, year):
+        return self.Ergast + str(year) + '/' + str(round) + '/' + 'drivers.json'
