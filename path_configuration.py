@@ -27,6 +27,11 @@ class Path(object):
         Path = Path + '/' + date + '_' + name + '-' + content + '.csv'
         return Path
 
+    def pitstop_path(self, date, name, content, race_id):
+        Path = self.grandprix_folder_path(date, name)
+        Path = Path + '/' + date + '_' + name + '-' + 'Race' + str(race_id) + '-' + content + '.csv'
+        return Path
+
     def config_path(self, name):
         Path = self.Database + self.Config + name + '.csv'
         return Path

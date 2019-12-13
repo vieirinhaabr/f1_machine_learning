@@ -53,8 +53,10 @@ class GrandPrix(object):
                 if Date_obj[i].year > 2017:
                     # get data from f1
                     print(' ')
-                # method calls
-                self.drivers_csv(Round[i], Date_obj[i].year, Date[i], GrandPrix[i])
+                # METHOD CALLS
+
+                # self.drivers_csv(Round[i], Date_obj[i].year, Date[i], GrandPrix[i])
+                self.pitstops_times_csv(Round[i], Date_obj[i].year, Date[i], GrandPrix[i])
 
             Progress.get_progress_bar()
             i = i + 1
@@ -83,8 +85,43 @@ class GrandPrix(object):
             Birth.append(driver['dateOfBirth'])
             DriversNationality.append(UnicodeFormatter(driver['nationality']))
 
-        Drivers = {'Driver Number': DriversNumber, 'ID': DriversID, 'Driver Initials': DriversInitials, 'Driver Name': DriversName, 'Birth Date': Birth, 'Nationality': DriversNationality}
+        Drivers = {'Driver Number': DriversNumber, 'ID': DriversID, 'Driver Initials': DriversInitials,
+                   'Driver Name': DriversName, 'Birth Date': Birth, 'Nationality': DriversNationality}
         Drivers_Data = pd.DataFrame(data=Drivers)
 
         Path = self.Path.grandprix_path(date, gp_name, 'Drivers')
         Drivers_Data.to_csv(Path)
+
+    def pitstops_times_csv(self, round, year, date, gp_name):
+        url = self.Url.url_pitstops_time(round, year)
+
+        url = self.Requests.get(url)
+        json = url.json()
+        json = json['MRData']
+        json = json['RaceTable']
+        # IF HAVE MORE THAN ONE RACE
+        Races = json['Races']
+
+        i = 1
+        for race in Races:
+            PitStops = race['PitStops']
+
+            DriverID = []
+            Corresponding_Lap = []
+            Driver_Stop_Number = []
+            PitStop_Time = []
+
+            for pitstop in PitStops:
+                DriverID.append(pitstop['driverId'])
+                Corresponding_Lap.append(pitstop['lap'])
+                Driver_Stop_Number.append(pitstop['stop'])
+                PitStop_Time.append(pitstop['duration'])
+
+            PitStop_Dict = {'ID': DriverID, 'Pit Stop Lap': Corresponding_Lap, 'Pit Stop Number': Driver_Stop_Number,
+                            'Pit Stop Time': PitStop_Time}
+            PitStop_Data = pd.DataFrame(data=PitStop_Dict)
+
+            Path = self.Path.pitstop_path(date, gp_name, 'PitStop', i)
+            PitStop_Data.to_csv(Path)
+
+            i = i + 1
