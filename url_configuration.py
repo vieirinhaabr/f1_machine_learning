@@ -14,7 +14,7 @@ class Url_builder(object):
 
             year = 1970
             while year <= current_year:
-                url = self.Ergast + str(year) + ".json"
+                url = self.Ergast + str(year) + ".json?limit=1000"
                 url_list.append(url)
                 year = year + 1
 
@@ -22,7 +22,7 @@ class Url_builder(object):
 
         # specific season
         def season(year):
-            url = self.Ergast + str(year) + ".json"
+            url = self.Ergast + str(year) + ".json?limit=1000"
             url = [url]
 
             return url
@@ -32,7 +32,7 @@ class Url_builder(object):
             url_list = []
 
             for year in year_list:
-                url_list.append(self.Ergast + str(year) + ".json")
+                url_list.append(self.Ergast + str(year) + ".json?limit=1000")
 
             return url_list
 
@@ -47,4 +47,4 @@ class Url_builder(object):
             print('ERROR ON URL CONFIGURATION')
 
     def url_driver(self, round, year):
-        return self.Ergast + str(year) + '/' + str(round) + '/' + 'drivers.json'
+        return self.Ergast + str(year) + '/' + str(round) + '/' + 'drivers.json?limit=1000'

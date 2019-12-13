@@ -41,20 +41,25 @@ class GrandPrix(object):
         for date in Date:
             Date_obj.append(datetime.datetime.strptime(date, '%Y-%m-%d'))
 
-        # WHILE BY GPS OF THE YEAR
+        Progress = progress_calculator.ProgressBar(Round)
+
+        # WHILE - BY GPS OF THE YEAR
         i = 0
         while i < Round.__len__():
 
             # CHECK YEAR
             if Date_obj[i] < datetime.datetime.now():
-                if Date_obj[i].year > 2017:
-                    print('get data from f1')
-                # method calls
-                self.drivers_csv(Round[i], Date_obj[i].year)
 
+                if Date_obj[i].year > 2017:
+                    # get data from f1
+                    print(' ')
+                # method calls
+                self.drivers_csv(Round[i], Date_obj[i].year, Date[i], GrandPrix[i])
+
+            Progress.get_progress_bar()
             i = i + 1
 
-    def drivers_csv(self, round, year):
+    def drivers_csv(self, round, year, date, gp_name):
         url = self.Url.url_driver(round, year)
 
         url = self.Requests.get(url)
@@ -67,17 +72,19 @@ class GrandPrix(object):
         DriversNumber = []
         DriversInitials = []
         DriversName = []
+        Birth = []
         DriversNationality = []
 
         for driver in json:
             DriversID.append(driver['driverId'])
             DriversNumber.append(driver['permanentNumber'])
             DriversInitials.append(driver['code'])
-            DriversName.append(driver['givenName']+driver['familyName'])
-            DriversNationality.append(driver['nationality'])
+            DriversName.append(UnicodeFormatter(driver['givenName']+' '+driver['familyName']))
+            Birth.append(driver['dateOfBirth'])
+            DriversNationality.append(UnicodeFormatter(driver['nationality']))
 
-        print(DriversID)
-        print(DriversNumber)
-        print(DriversInitials)
-        print(DriversName)
-        print(DriversNationality)
+        Drivers = {'Driver Number': DriversNumber, 'ID': DriversID, 'Driver Initials': DriversInitials, 'Driver Name': DriversName, 'Birth Date': Birth, 'Nationality': DriversNationality}
+        Drivers_Data = pd.DataFrame(data=Drivers)
+
+        Path = self.Path.grandprix_path(date, gp_name, 'Drivers')
+        Drivers_Data.to_csv(Path)

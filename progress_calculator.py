@@ -35,4 +35,4 @@ class ProgressBar(object):
         self.Progress = self.Progress + self.Max
         self.Status = self.Status + self.Progress_Bars
 
-        return '/ ' + self.Status + ' / ' + str(self.Progress)
+        print('/ ' + self.Status + ' / ' + '{0:.2f}'.format(self.Progress))

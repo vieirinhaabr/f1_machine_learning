@@ -25,7 +25,7 @@ class Season_Info(object):
 
         try:
             for url in url_list:
-                print(Progress.get_progress_bar())
+                Progress.get_progress_bar()
                 Season = 0
                 Round = []
                 GrandPrix = []

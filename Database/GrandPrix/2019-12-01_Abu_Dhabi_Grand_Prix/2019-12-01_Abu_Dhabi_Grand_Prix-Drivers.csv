@@ -1,21 +1,21 @@
-Number,Driver Name,Driver Initials,Driver Team,Color
-44,Lewis HAMILTON,HAM,Mercedes,00d2be
-33,Max VERSTAPPEN,VER,Red Bull Racing,1e41ff
-16,Charles LECLERC,LEC,Ferrari,dc0000
-5,Sebastian VETTEL,VET,Ferrari,dc0000
-23,Alexander ALBON,ALB,Red Bull Racing,1e41ff
-4,Lando NORRIS,NOR,McLaren,ff8700
-3,Daniel RICCIARDO,RIC,Renault,fff500
-55,Carlos SAINZ,SAI,McLaren,ff8700
-27,Nico HULKENBERG,HUL,Renault,fff500
-11,Sergio PEREZ,PER,Racing Point,f596c8
-10,Pierre GASLY,GAS,Toro Rosso,469bff
-18,Lance STROLL,STR,Racing Point,f596c8
-26,Daniil KVYAT,KVY,Toro Rosso,469bff
-20,Kevin MAGNUSSEN,MAG,Haas F1 Team,bd9e57
-8,Romain GROSJEAN,GRO,Haas F1 Team,bd9e57
-99,Antonio GIOVINAZZI,GIO,Alfa Romeo Racing,9b0000
-7,Kimi RÄIKKÖNEN,RAI,Alfa Romeo Racing,9b0000
-63,George RUSSELL,RUS,Williams,ffffff
-88,Robert KUBICA,KUB,Williams,ffffff
-77,Valtteri BOTTAS,BOT,Mercedes,00d2be
+,Driver Number,ID,Driver Initials,Driver Name,Birth Date,Nationality
+0,23,albon,ALB,Alexander Albon,1996-03-23,Thai
+1,77,bottas,BOT,Valtteri Bottas,1989-08-28,Finnish
+2,10,gasly,GAS,Pierre Gasly,1996-02-07,French
+3,99,giovinazzi,GIO,Antonio Giovinazzi,1993-12-14,Italian
+4,8,grosjean,GRO,Romain Grosjean,1986-04-17,French
+5,44,hamilton,HAM,Lewis Hamilton,1985-01-07,British
+6,27,hulkenberg,HUL,Nico Hulkenberg,1987-08-19,German
+7,88,kubica,KUB,Robert Kubica,1984-12-07,Polish
+8,26,kvyat,KVY,Daniil Kvyat,1994-04-26,Russian
+9,16,leclerc,LEC,Charles Leclerc,1997-10-16,Monegasque
+10,20,kevin_magnussen,MAG,Kevin Magnussen,1992-10-05,Danish
+11,4,norris,NOR,Lando Norris,1999-11-13,British
+12,11,perez,PER,Sergio Perez,1990-01-26,Mexican
+13,7,raikkonen,RAI,Kimi Raikkonen,1979-10-17,Finnish
+14,3,ricciardo,RIC,Daniel Ricciardo,1989-07-01,Australian
+15,63,russell,RUS,George Russell,1998-02-15,British
+16,55,sainz,SAI,Carlos Sainz,1994-09-01,Spanish
+17,18,stroll,STR,Lance Stroll,1998-10-29,Canadian
+18,33,max_verstappen,VER,Max Verstappen,1997-09-30,Dutch
+19,5,vettel,VET,Sebastian Vettel,1987-07-03,German

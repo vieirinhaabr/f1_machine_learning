@@ -16,8 +16,15 @@ class Path(object):
         if not os.path.exists(self.Database + self.Season):
             os.makedirs(self.Database + self.Season)
 
-    def grandprix_path(self, date, name):
-        Path = self.Database + self.GrandPrix + date + '_' + name + '.csv'
+    def grandprix_folder_path(self, date, name):
+        Path = self.Database + self.GrandPrix + date + '_' + name
+        if not os.path.exists(Path):
+            os.makedirs(Path)
+        return Path
+
+    def grandprix_path(self, date, name, content):
+        Path = self.grandprix_folder_path(date, name)
+        Path = Path + '/' + date + '_' + name + '-' + content + '.csv'
         return Path
 
     def config_path(self, name):
