@@ -12,53 +12,51 @@ import progress_calculator
 
 
 class Season_Info(object):
+    Url = None
+    Path = None
+    Requests = None
+
+    def __init__(self):
+        self.Url = url_configuration.Url_builder()
+        self.Path = path_configuration.Path()
+        self.Requests = requests
+
     def import_seasons(self, year_to_find=None):
-        Url = url_configuration.Url_builder()
-        Path = path_configuration.Path()
-
-        try:
-            url_list = Url.url_season(year_to_find)
-        except:
-            print('ERROR WHEN GETTING URL')
-
+        url_list = self.Url.url_season(year_to_find)
         Progress = progress_calculator.ProgressBar(url_list)
 
-        try:
-            for url in url_list:
-                Progress.get_progress_bar()
-                Season = 0
-                Round = []
-                GrandPrix = []
-                CircuitID = []
-                CircuitName = []
-                City = []
-                Country = []
-                Date = []
+        for url in url_list:
+            Progress.get_progress_bar()
+            Season = 0
+            Round = []
+            GrandPrix = []
+            CircuitID = []
+            CircuitName = []
+            City = []
+            Country = []
+            Date = []
 
-                page = requests.get(url)
-                json = page.json()
-                j_temp = json['MRData']
-                j_temp = j_temp['RaceTable']
-                circuits_list = j_temp['Races']
+            page = self.Requests.get(url)
+            json = page.json()
+            j_temp = json['MRData']
+            j_temp = j_temp['RaceTable']
+            circuits_list = j_temp['Races']
 
-                for circuit in circuits_list:
-                    Season = circuit['season']
-                    Round.append(circuit['round'])
-                    GrandPrix.append(UnicodeFormatter(circuit['raceName'].replace(' ', '_')))
-                    CircuitID.append(UnicodeFormatter(circuit['Circuit']['circuitId']))
-                    CircuitName.append(UnicodeFormatter(circuit['Circuit']['circuitName']))
-                    City.append(UnicodeFormatter(circuit['Circuit']['Location']['locality']))
-                    Country.append(UnicodeFormatter(circuit['Circuit']['Location']['country']))
-                    Date.append(circuit['date'])
+            for circuit in circuits_list:
+                Season = circuit['season']
+                Round.append(circuit['round'])
+                GrandPrix.append(UnicodeFormatter(circuit['raceName'].replace(' ', '_')))
+                CircuitID.append(UnicodeFormatter(circuit['Circuit']['circuitId']))
+                CircuitName.append(UnicodeFormatter(circuit['Circuit']['circuitName']))
+                City.append(UnicodeFormatter(circuit['Circuit']['Location']['locality']))
+                Country.append(UnicodeFormatter(circuit['Circuit']['Location']['country']))
+                Date.append(circuit['date'])
 
-                Circuit_Data = {'Round': Round, 'Grand Prix': GrandPrix, 'Circuit ID': CircuitID,
-                                'Circuit Name': CircuitName, 'City': City,
-                                'Country': Country, 'Date': Date}
-                Circuit_DF = pd.DataFrame(data=Circuit_Data)
-                Circuit_DF = Circuit_DF.set_index('Round')
+            Circuit_Data = {'Round': Round, 'Grand Prix': GrandPrix, 'Circuit ID': CircuitID,
+                            'Circuit Name': CircuitName, 'City': City,
+                            'Country': Country, 'Date': Date}
+            Circuit_DF = pd.DataFrame(data=Circuit_Data)
+            Circuit_DF = Circuit_DF.set_index('Round')
 
-                path = Path.season_path(Season)
-                Circuit_DF.to_csv(path)
-
-        except:
-            print('ERROR WHEN GENERATE/CONVERT DATAFRAMES')
+            path = self.Path.season_path(Season)
+            Circuit_DF.to_csv(path)

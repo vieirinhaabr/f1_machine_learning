@@ -52,9 +52,9 @@ class GrandPrix(object):
                 # METHOD CALLS
 
                 # self.drivers_csv(Round[i], Date_obj[i].year, Date[i], GrandPrix[i])
-                self.contructors_csv(Round[i], Date_obj[i].year, Date[i], GrandPrix[i])
+                # self.contructors_csv(Round[i], Date_obj[i].year, Date[i], GrandPrix[i])
                 # self.pitstops_times_csv(Round[i], Date_obj[i].year, Date[i], GrandPrix[i])
-                # self.result_csv(Round[i], Date_obj[i].year, Date[i], GrandPrix[i])
+                self.result_csv(Round[i], Date_obj[i].year, Date[i], GrandPrix[i])
 
                 if Date_obj[i].year > 2017:
                     # get data from f1
@@ -66,8 +66,8 @@ class GrandPrix(object):
     def drivers_csv(self, round, year, date, gp_name):
         url = self.Url.url_driver(round, year)
 
-        url = self.Requests.get(url)
-        json = url.json()
+        page = self.Requests.get(url)
+        json = page.json()
         json = json['MRData']
         json = json['DriverTable']
         Drivers = json['Drivers']
@@ -91,14 +91,14 @@ class GrandPrix(object):
                         'Driver Name': DriversName, 'Birth Date': Birth, 'Driver Nationality': DriversNationality}
         Drivers_Data = pd.DataFrame(data=Drivers_Dict)
 
-        Path = self.Path.grandprix_path(date, gp_name, 'Drivers')
+        Path = self.Path.grandprix_path(year, date, gp_name, 'Drivers')
         Drivers_Data.to_csv(Path)
 
     def contructors_csv(self, round, year, date, gp_name):
         url = self.Url.url_constructor(round, year)
 
-        url = self.Requests.get(url)
-        json = url.json()
+        page = self.Requests.get(url)
+        json = page.json()
         json = json['MRData']
         json = json['ConstructorTable']
         Constructors = json['Constructors']
@@ -116,14 +116,14 @@ class GrandPrix(object):
                              "Constructor Nationality": ConstructorNationality}
         Constructor_Data = pd.DataFrame(data=Constructors_Dict)
 
-        Path = self.Path.grandprix_path(date, gp_name, 'Constructors')
+        Path = self.Path.grandprix_path(year, date, gp_name, 'Constructors')
         Constructor_Data.to_csv(Path)
 
     def pitstops_times_csv(self, round, year, date, gp_name):
         url = self.Url.url_pitstops_time(round, year)
 
-        url = self.Requests.get(url)
-        json = url.json()
+        page = self.Requests.get(url)
+        json = page.json()
         json = json['MRData']
         json = json['RaceTable']
         # IF HAVE MORE THAN ONE RACE
@@ -148,7 +148,7 @@ class GrandPrix(object):
                             'Pit Stop Time': PitStop_Time}
             PitStop_Data = pd.DataFrame(data=PitStop_Dict)
 
-            Path = self.Path.gp_multiplerace_path(date, gp_name, 'PitStop', i)
+            Path = self.Path.gp_multiplerace_path(year, date, gp_name, 'PitStop', i)
             PitStop_Data.to_csv(Path)
 
             i = i + 1
@@ -156,33 +156,78 @@ class GrandPrix(object):
     def result_csv(self, round, year, date, gp_name):
         url = self.Url.url_results(round, year)
 
-        url = self.Requests.get(url)
-        json = url.json()
+        page = self.Requests.get(url)
+        json = page.json()
         json = json['MRData']
         json = json['RaceTable']
         Races = json['Races']
 
         i = 1
         for race in Races:
-            Result = race['PitStops']
+            Results = race['Results']
 
+            DriverPosition = []
+            DriverGridPosition = []
             DriverID = []
-            Position = []
-            Driver_Stop_Number = []
-            PitStop_Time = []
+            ConstructorID = []
+            TimeToLeader = []
+            RaceStatus = []
+            FastestLapRank = []
+            AverageSpeed = []
 
-            for pitstop in Result:
-                DriverID.append(pitstop['driverId'])
-                Position.append(pitstop['lap'])
-                Driver_Stop_Number.append(pitstop['stop'])
-                PitStop_Time.append(pitstop['duration'])
+            for result in Results:
 
-            PitStop_Dict = {'Pit Stop Lap': Position, 'Driver ID': DriverID,
-                            'Pit Stop Number': Driver_Stop_Number,
-                            'Pit Stop Time': PitStop_Time}
-            PitStop_Data = pd.DataFrame(data=PitStop_Dict)
+                # DRIVER POSITION
+                if result['positionText'] == 'R':
+                    DriverPosition.append(None)
+                else:
+                    DriverPosition.append(result['positionText'])
 
-            Path = self.Path.pitstop_path(date, gp_name, 'PitStop', i)
-            PitStop_Data.to_csv(Path)
+                # GRID
+                DriverGridPosition.append(result['grid'])
+                # DRIVER ID
+                DriverID.append(result['Driver']['driverId'])
+                # CONSTRUCTOR ID
+                ConstructorID.append(result['Constructor']['constructorId'])
+
+                # TIME TO LEADER
+                if result['position'] == '1':
+                    TimeToLeader.append("0")
+                elif result['status'] != 'Finished':
+                    Check = result['status']
+                    if Check[0] == '+':
+                        TimeToLeader.append(result['status'])
+                    else:
+                        TimeToLeader.append(None)
+                else:
+                    TimeToLeader.append(result['Time']['time'])
+
+                # RACE STATUS
+                if result['status'][0] == '+':
+                    RaceStatus.append('Finished')
+                else:
+                    RaceStatus.append(result['status'])
+
+                # CASE THE DRIVER GET OUT OF RACE WITHOUT DO ONE LAP
+                if 'FastestLap' not in result:
+                    # RANK FASTEST LAP
+                    FastestLapRank.append(None)
+                    # AVERAGE SPEED
+                    AverageSpeed.append(None)
+                else:
+                    # RANK FASTEST LAP
+                    FastestLapRank.append(result['FastestLap']['rank'])
+                    # AVERAGE SPEED
+                    AverageSpeed.append(result['FastestLap']['AverageSpeed']['speed'])
+
+            Result_Dict = {'Result Positions': DriverPosition, 'Initials Positions': DriverGridPosition,
+                           'DriverID': DriverID, 'ConstructorID': ConstructorID, 'Result Time to Leader': TimeToLeader,
+                           'Result Status': RaceStatus, 'Result Fastest Rank': FastestLapRank,
+                           'Result Average Speed': AverageSpeed}
+            Result_Data = pd.DataFrame(data=Result_Dict)
+            Result_Data = Result_Data.set_index('Result Positions')
+
+            Path = self.Path.gp_multiplerace_path(year, date, gp_name, 'Result', i)
+            Result_Data.to_csv(Path)
 
             i = i + 1

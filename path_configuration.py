@@ -1,6 +1,7 @@
 import os
 import datetime
 
+
 class Path(object):
 
     Database = 'Database/'
@@ -16,19 +17,19 @@ class Path(object):
         if not os.path.exists(self.Database + self.Season):
             os.makedirs(self.Database + self.Season)
 
-    def grandprix_folder_path(self, date, name):
-        Path = self.Database + self.GrandPrix + date + '_' + name
+    def grandprix_folder_path(self, year, date, name):
+        Path = self.Database + self.GrandPrix + str(year) + '/' + date + '_' + name
         if not os.path.exists(Path):
             os.makedirs(Path)
         return Path
 
-    def grandprix_path(self, date, name, content):
-        Path = self.grandprix_folder_path(date, name)
+    def grandprix_path(self, year, date, name, content):
+        Path = self.grandprix_folder_path(year, date, name)
         Path = Path + '/' + date + '_' + name + '-' + content + '.csv'
         return Path
 
-    def gp_multiplerace_path(self, date, name, content, race_id):
-        Path = self.grandprix_folder_path(date, name)
+    def gp_multiplerace_path(self, year, date, name, content, race_id):
+        Path = self.grandprix_folder_path(year, date, name)
         Path = Path + '/' + date + '_' + name + '-' + 'Race' + str(race_id) + '-' + content + '.csv'
         return Path
 
