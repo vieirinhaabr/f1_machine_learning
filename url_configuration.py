@@ -49,5 +49,11 @@ class Url_builder(object):
     def url_driver(self, round, year):
         return self.Ergast + str(year) + '/' + str(round) + '/' + 'drivers.json?limit=1000'
 
+    def url_constructor(self, round, year):
+        return self.Ergast + str(year) + '/' + str(round) + '/' + 'constructors.json?limit=1000'
+
     def url_pitstops_time(self, round, year):
         return self.Ergast + str(year) + '/' + str(round) + '/' + 'pitstops.json?limit=1000'
+
+    def url_results(self, round, year):
+        return self.Ergast + str(year) + '/' + str(round) + '/' + 'results.json?limit=1000'
