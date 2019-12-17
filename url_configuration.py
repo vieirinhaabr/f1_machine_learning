@@ -60,3 +60,6 @@ class Url_builder(object):
 
     def url_results(self, round, year):
         return self.Ergast + str(year) + '/' + str(round) + '/' + 'results.json?limit=1000'
+
+    def url_lapbylap(self, round, year):
+        return self.Ergast + str(year) + '/' + str(round) + '/' + 'laps/', '.json?limit=1000'

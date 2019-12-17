@@ -54,7 +54,8 @@ class GrandPrix(object):
                 # self.drivers_csv(Round[i], Date_obj[i].year, Date[i], GrandPrix[i])
                 # self.contructors_csv(Round[i], Date_obj[i].year, Date[i], GrandPrix[i])
                 # self.pitstops_times_csv(Round[i], Date_obj[i].year, Date[i], GrandPrix[i])
-                self.result_csv(Round[i], Date_obj[i].year, Date[i], GrandPrix[i])
+                # self.result_csv(Round[i], Date_obj[i].year, Date[i], GrandPrix[i])
+                self.by_lap_csv(Round[i], Date_obj[i].year, Date[i], GrandPrix[i])
 
                 if Date_obj[i].year > 2017:
                     # get data from f1
@@ -73,22 +74,20 @@ class GrandPrix(object):
         Drivers = json['Drivers']
 
         DriversID = []
-        DriversNumber = []
         DriversInitials = []
         DriversName = []
-        Birth = []
-        DriversNationality = []
+        YearsOld = []
 
         for driver in Drivers:
             DriversID.append(driver['driverId'])
-            DriversNumber.append(driver['permanentNumber'])
             DriversInitials.append(driver['code'])
             DriversName.append(UnicodeFormatter(driver['givenName']+' '+driver['familyName']))
-            Birth.append(driver['dateOfBirth'])
-            DriversNationality.append(UnicodeFormatter(driver['nationality']))
+            YearsOld.append(
+                datetime.datetime.now().year - datetime.datetime.strptime(driver['dateOfBirth'], '%Y-%m-%d').year
+            )
 
-        Drivers_Dict = {'Driver Number': DriversNumber, 'Driver ID': DriversID, 'Driver Initials': DriversInitials,
-                        'Driver Name': DriversName, 'Birth Date': Birth, 'Driver Nationality': DriversNationality}
+        Drivers_Dict = {'Driver ID': DriversID, 'Driver Initials': DriversInitials,
+                        'Driver Name': DriversName, 'Years Old': YearsOld}
         Drivers_Data = pd.DataFrame(data=Drivers_Dict)
 
         Path = self.Path.grandprix_path(year, date, gp_name, 'Drivers')
@@ -105,15 +104,12 @@ class GrandPrix(object):
 
         ConstructorID = []
         ConstructorName = []
-        ConstructorNationality = []
 
         for constructor in Constructors:
             ConstructorID.append(constructor['constructorId'])
             ConstructorName.append(constructor['name'])
-            ConstructorNationality.append(constructor['nationality'])
 
-        Constructors_Dict = {"Constructor ID": ConstructorID, "Constructor Name": ConstructorName,
-                             "Constructor Nationality": ConstructorNationality}
+        Constructors_Dict = {"Constructor ID": ConstructorID, "Constructor Name": ConstructorName}
         Constructor_Data = pd.DataFrame(data=Constructors_Dict)
 
         Path = self.Path.grandprix_path(year, date, gp_name, 'Constructors')
@@ -231,3 +227,22 @@ class GrandPrix(object):
             Result_Data.to_csv(Path)
 
             i = i + 1
+
+    def by_lap_csv(self, round, year, date, gp_name):
+        # URL
+        url_1, url_2 = self.Url.url_lapbylap(round, year)
+
+        # LAP COUNTER
+        Lap_Counter = 1
+
+        # LAP VALIDATOR
+        Lap_v = True
+
+        # DRIVER LIST
+        driver_list = list(pd.read_csv(self.Path.grandprix_path(year, date, gp_name, 'Drivers'))['Driver ID'].values)
+        print(driver_list)
+
+        """while Lap_v:
+            page = self.Requests.get(url_1 + Lap_Counter + url_2)
+            json = page.json()
+            jtemp = json['MRData']"""
