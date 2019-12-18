@@ -6,12 +6,16 @@ class ProgressBar(object):
     Progress = 0
     Progress_Bars = ''
     Status = ''
+    Left_Border = '['
+    Right_Border = ']'
 
     def __init__(self, undefined):
         if type(undefined) == list:
             self.as_list(undefined)
         elif type(undefined) == int:
             self.as_int(undefined)
+        elif type(undefined) == bool:
+            self.create_progress_counter()
         else:
             print('Type error')
 
@@ -36,3 +40,12 @@ class ProgressBar(object):
         self.Status = self.Status + self.Progress_Bars
 
         print('/ ' + self.Status + ' / ' + '{0:.2f}'.format(self.Progress))
+
+    def create_progress_counter(self):
+        self.Progress_Bars = '#'
+        self.Status = self.Progress_Bars
+        print('Starting Counter...')
+
+    def get_progress_counter(self, counter):
+        print(self.Left_Border + self.Status + self.Right_Border, ' Getting lap:', counter)
+        self.Status = self.Status + self.Progress_Bars

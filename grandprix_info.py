@@ -229,6 +229,9 @@ class GrandPrix(object):
             i = i + 1
 
     def by_lap_csv(self, round, year, date, gp_name):
+        # Progress Calculator
+        Progress = progress_calculator.ProgressBar(True)
+
         # URL
         url_1, url_2 = self.Url.url_lapbylap(round, year)
 
@@ -240,9 +243,51 @@ class GrandPrix(object):
 
         # DRIVER LIST
         driver_list = list(pd.read_csv(self.Path.grandprix_path(year, date, gp_name, 'Drivers'))['Driver ID'].values)
-        print(driver_list)
 
-        """while Lap_v:
-            page = self.Requests.get(url_1 + Lap_Counter + url_2)
+        # DRIVERS DICT
+        Lap_Times_Dict = {}
+        Lap_Positions_Dict = {}
+
+        # START VALUES
+        Lap_Times_Dict['Driver ID'] = driver_list
+        Lap_Positions_Dict['Driver ID'] = driver_list
+
+        while Lap_v:
+            # PROGRESS
+            Progress.get_progress_counter(Lap_Counter)
+
+            # DRIVERS LIST
+            Lap_Times = []
+            Lap_Positions = []
+
+            page = self.Requests.get(url_1 + str(Lap_Counter) + url_2)
             json = page.json()
-            jtemp = json['MRData']"""
+            json = json['MRData']
+
+            if int(json['total']) == 0:
+                Lap_v = False
+            else:
+                jtemp = json['RaceTable']
+                jtemp = jtemp['Races'][0]
+                jtemp = jtemp['Laps'][0]
+                Laps = jtemp['Timings']
+
+                for driver in driver_list:
+                    Driver_Out_Checker = True
+                    for lap in Laps:
+                        if driver == lap['driverId']:
+                            Driver_Out_Checker = False
+                            Lap_Times.append(lap['time'])
+                            Lap_Positions.append(lap['position'])
+
+                    if Driver_Out_Checker:
+                        Lap_Times.append(None)
+                        Lap_Positions.append(None)
+
+                Lap_Times_Dict[Lap_Counter] = Lap_Times
+                Lap_Positions_Dict[Lap_Counter] = Lap_Positions
+
+                Lap_Counter = Lap_Counter + 1
+
+        print(Lap_Positions_Dict)
+        print(Lap_Times_Dict)
