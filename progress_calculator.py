@@ -1,4 +1,5 @@
 import os
+import bcolors
 
 
 class ProgressBar(object):
@@ -47,5 +48,5 @@ class ProgressBar(object):
         print('Starting Counter...')
 
     def get_progress_counter(self, counter):
-        print(self.Left_Border + self.Status + self.Right_Border, ' Getting lap:', counter)
+        print(bcolors.WAITMSG + self.Left_Border + self.Status + self.Right_Border, ' Getting lap:', str(counter) + bcolors.END)
         self.Status = self.Status + self.Progress_Bars

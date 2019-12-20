@@ -17,16 +17,19 @@ class Path(object):
         if not os.path.exists(self.Database + self.Season):
             os.makedirs(self.Database + self.Season)
 
-    def grandprix_folder_path(self, year, date, name):
-        Path = self.Database + self.GrandPrix + str(year) + '/' + date + '_' + name
+    def grandprix_folder_path(self, year, name):
+        Path = self.Database + self.GrandPrix + str(year) + '/' + str(year) + '_' + name
         if not os.path.exists(Path):
             os.makedirs(Path)
         return Path
 
-    def grandprix_path(self, year, date, name, content):
-        Path = self.grandprix_folder_path(year, date, name)
-        Path = Path + '/' + date + '_' + name + '-' + content + '.csv'
+    def grandprix_path(self, year, name, content):
+        Path = self.grandprix_folder_path(year, name)
+        Path = Path + '/' + str(year) + '_' + name + '-' + content + '.csv'
         return Path
+
+    def standings_path(self, year):
+        return self.Database + self.GrandPrix + str(year) + '/' + 'CurrentDriverStandings.csv'
 
     def gp_multiplerace_path(self, year, date, name, content, race_id):
         Path = self.grandprix_folder_path(year, date, name)

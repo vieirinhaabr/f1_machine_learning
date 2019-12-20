@@ -4,6 +4,7 @@ import requests
 import datetime
 from unidecode import unidecode as UnicodeFormatter
 import os
+import bcolors
 
 # Local imports
 import path_configuration
@@ -50,12 +51,13 @@ class GrandPrix(object):
             # CHECK YEAR
             if Date_obj[i] < datetime.datetime.now():
                 # METHOD CALLS
-
-                self.drivers_csv(Round[i], Date_obj[i].year, Date[i], GrandPrix[i])
-                self.contructors_csv(Round[i], Date_obj[i].year, Date[i], GrandPrix[i])
-                self.pitstops_times_csv(Round[i], Date_obj[i].year, Date[i], GrandPrix[i])
-                self.result_csv(Round[i], Date_obj[i].year, Date[i], GrandPrix[i])
-                self.by_lap_csv(Round[i], Date_obj[i].year, Date[i], GrandPrix[i])
+                print(bcolors.PASS + 'STARTING EXTRACTOR, GETTING FROM', GrandPrix[i], 'DATE:', Date[i] + bcolors.END)
+                self.drivers_csv(Round[i], Date_obj[i].year, GrandPrix[i])
+                self.contructors_csv(Round[i], Date_obj[i].year, GrandPrix[i])
+                self.pitstops_times_csv(Round[i], Date_obj[i].year, GrandPrix[i])
+                self.result_csv(Round[i], Date_obj[i].year, GrandPrix[i])
+                self.by_lap_csv(Round[i], Date_obj[i].year, GrandPrix[i])
+                self.current_driver_standings(Round[i], Date_obj[i].year, GrandPrix[i])
 
                 if Date_obj[i].year > 2017:
                     # get data from f1
@@ -64,7 +66,9 @@ class GrandPrix(object):
             Progress.get_progress_bar()
             i = i + 1
 
-    def drivers_csv(self, round, year, date, gp_name):
+    def drivers_csv(self, round, year, gp_name):
+        print(bcolors.ITALIC + 'GETTING DRIVERS BY RACE...', gp_name + bcolors.END)
+
         url = self.Url.url_driver(round, year)
 
         page = self.Requests.get(url)
@@ -90,10 +94,12 @@ class GrandPrix(object):
                         'Driver Name': DriversName, 'Years Old': YearsOld}
         Drivers_Data = pd.DataFrame(data=Drivers_Dict)
 
-        Path = self.Path.grandprix_path(year, date, gp_name, 'Drivers')
+        Path = self.Path.grandprix_path(year, gp_name, 'Drivers')
         Drivers_Data.to_csv(Path)
 
-    def contructors_csv(self, round, year, date, gp_name):
+    def contructors_csv(self, round, year, gp_name):
+        print(bcolors.ITALIC + 'GETTING CONSTRUCTORS BY RACE...', gp_name + bcolors.END)
+
         url = self.Url.url_constructor(round, year)
 
         page = self.Requests.get(url)
@@ -112,10 +118,12 @@ class GrandPrix(object):
         Constructors_Dict = {"Constructor ID": ConstructorID, "Constructor Name": ConstructorName}
         Constructor_Data = pd.DataFrame(data=Constructors_Dict)
 
-        Path = self.Path.grandprix_path(year, date, gp_name, 'Constructors')
+        Path = self.Path.grandprix_path(year, gp_name, 'Constructors')
         Constructor_Data.to_csv(Path)
 
-    def pitstops_times_csv(self, round, year, date, gp_name):
+    def pitstops_times_csv(self, round, year, gp_name):
+        print(bcolors.ITALIC + 'GETTING PITSTOPS BY RACE...', gp_name + bcolors.END)
+
         url = self.Url.url_pitstops_time(round, year)
 
         page = self.Requests.get(url)
@@ -141,10 +149,12 @@ class GrandPrix(object):
                         'Pit Stop Time': PitStop_Time}
         PitStop_Data = pd.DataFrame(data=PitStop_Dict)
 
-        Path = self.Path.gp_multiplerace_path(year, date, gp_name, 'PitStop', i)
+        Path = self.Path.grandprix_path(year, gp_name, 'PitStop')
         PitStop_Data.to_csv(Path)
 
-    def result_csv(self, round, year, date, gp_name):
+    def result_csv(self, round, year, gp_name):
+        print(bcolors.ITALIC + 'GETTING RESULT BY RACE...', gp_name + bcolors.END)
+
         url = self.Url.url_results(round, year)
 
         page = self.Requests.get(url)
@@ -208,17 +218,24 @@ class GrandPrix(object):
                 # AVERAGE SPEED
                 AverageSpeed.append(result['FastestLap']['AverageSpeed']['speed'])
 
-        Result_Dict = {'Result Positions': DriverPosition, 'Initials Positions': DriverGridPosition,
-                       'DriverID': DriverID, 'ConstructorID': ConstructorID, 'Result Time to Leader': TimeToLeader,
-                       'Result Status': RaceStatus, 'Result Fastest Rank': FastestLapRank,
-                       'Result Average Speed': AverageSpeed}
+        Initial_Ps_Dict = {'Initials Positions': DriverGridPosition, 'DriverID': DriverID}
+        Initial_Ps_Data = pd.DataFrame(data=Initial_Ps_Dict)
+        Initial_Ps_Data = Initial_Ps_Data.set_index('Initials Positions')
+
+        Path = self.Path.grandprix_path(year, gp_name, 'InitialPositions')
+        Initial_Ps_Data.to_csv(Path)
+
+        Result_Dict = {'Result Positions': DriverPosition, 'DriverID': DriverID, 'ConstructorID': ConstructorID,
+                       'Result Time to Leader': TimeToLeader, 'Result Status': RaceStatus,
+                       'Result Fastest Rank': FastestLapRank, 'Result Average Speed': AverageSpeed}
         Result_Data = pd.DataFrame(data=Result_Dict)
         Result_Data = Result_Data.set_index('Result Positions')
 
-        Path = self.Path.grandprix_path(year, date, gp_name, 'Result')
+        Path = self.Path.grandprix_path(year, gp_name, 'Result')
         Result_Data.to_csv(Path)
 
-    def by_lap_csv(self, round, year, date, gp_name):
+    def by_lap_csv(self, round, year, gp_name):
+        print(bcolors.ITALIC + 'GETTING LAP TIMES AND POSITIONS BY RACE...', gp_name + bcolors.END)
         # Progress Calculator
         Progress = progress_calculator.ProgressBar(True)
 
@@ -232,7 +249,7 @@ class GrandPrix(object):
         Lap_v = True
 
         # DRIVER LIST
-        driver_list = list(pd.read_csv(self.Path.grandprix_path(year, date, gp_name, 'Drivers'))['Driver ID'].values)
+        driver_list = list(pd.read_csv(self.Path.grandprix_path(year, gp_name, 'Drivers'))['Driver ID'].values)
 
         # DRIVERS DICT
         Lap_Times_Dict = {}
@@ -281,10 +298,20 @@ class GrandPrix(object):
 
         Lap_Times_Data = pd.DataFrame(data=Lap_Times_Dict)
         Lap_Times_Data = Lap_Times_Data.set_index('Driver ID')
-        Path = self.Path.grandprix_path(year, date, gp_name, 'TimesByLap')
+        Path = self.Path.grandprix_path(year, gp_name, 'TimesByLap')
         Lap_Times_Data.to_csv(Path)
 
         Lap_Positions_Data = pd.DataFrame(data=Lap_Positions_Dict)
         Lap_Positions_Data = Lap_Positions_Data.set_index('Driver ID')
-        Path = self.Path.grandprix_path(year, date, gp_name, 'PositionsByLap')
+        Path = self.Path.grandprix_path(year, gp_name, 'PositionsByLap')
         Lap_Positions_Data.to_csv(Path)
+
+    def current_driver_standings(self, round, year, gp_name):
+        print(bcolors.ITALIC + 'GETTING DRIVER STANDINGS FROM RACE...', gp_name + bcolors.END)
+
+        url = self.Url.driver_standings(round, year)
+
+        page = requests.get(url)
+        json = page.json()
+
+        print(json)

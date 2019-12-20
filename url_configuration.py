@@ -63,3 +63,6 @@ class Url_builder(object):
 
     def url_lapbylap(self, round, year):
         return self.Ergast + str(year) + '/' + str(round) + '/' + 'laps/', '.json?limit=1000'
+
+    def driver_standings(self, round, year):
+        return self.Ergast + str(year) + '/' + str(round) + '/' + 'driverStandings.json?limit=1000'
