@@ -1,17 +1,17 @@
-Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Date
-1,Brazilian_Grand_Prix,jacarepagua,Autodromo Internacional Nelson Piquet,Rio de Janeiro,Brazil,1987-04-12
-2,San_Marino_Grand_Prix,imola,Autodromo Enzo e Dino Ferrari,Imola,Italy,1987-05-03
-3,Belgian_Grand_Prix,spa,Circuit de Spa-Francorchamps,Spa,Belgium,1987-05-17
-4,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,1987-05-31
-5,Detroit_Grand_Prix,detroit,Detroit Street Circuit,Detroit,USA,1987-06-21
-6,French_Grand_Prix,ricard,Circuit Paul Ricard,Le Castellet,France,1987-07-05
-7,British_Grand_Prix,silverstone,Silverstone Circuit,Silverstone,UK,1987-07-12
-8,German_Grand_Prix,hockenheimring,Hockenheimring,Hockenheim,Germany,1987-07-26
-9,Hungarian_Grand_Prix,hungaroring,Hungaroring,Budapest,Hungary,1987-08-09
-10,Austrian_Grand_Prix,osterreichring,A1-Ring,Spielburg,Austria,1987-08-16
-11,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,1987-09-06
-12,Portuguese_Grand_Prix,estoril,Autodromo do Estoril,Estoril,Portugal,1987-09-20
-13,Spanish_Grand_Prix,jerez,Circuito de Jerez,Jerez de la Frontera,Spain,1987-09-27
-14,Mexican_Grand_Prix,rodriguez,Autodromo Hermanos Rodriguez,Mexico City,Mexico,1987-10-18
-15,Japanese_Grand_Prix,suzuka,Suzuka Circuit,Suzuka,Japan,1987-11-01
-16,Australian_Grand_Prix,adelaide,Adelaide Street Circuit,Adelaide,Australia,1987-11-15
+Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Latitude,Longitude,Date
+1,Brazilian_Grand_Prix,jacarepagua,Autodromo Internacional Nelson Piquet,Rio de Janeiro,Brazil,-22.9756,-43.395,1987-04-12
+2,San_Marino_Grand_Prix,imola,Autodromo Enzo e Dino Ferrari,Imola,Italy,44.3439,11.7167,1987-05-03
+3,Belgian_Grand_Prix,spa,Circuit de Spa-Francorchamps,Spa,Belgium,50.4372,5.97139,1987-05-17
+4,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,43.7347,7.42056,1987-05-31
+5,Detroit_Grand_Prix,detroit,Detroit Street Circuit,Detroit,USA,42.3298,-83.0401,1987-06-21
+6,French_Grand_Prix,ricard,Circuit Paul Ricard,Le Castellet,France,43.2506,5.79167,1987-07-05
+7,British_Grand_Prix,silverstone,Silverstone Circuit,Silverstone,UK,52.0786,-1.01694,1987-07-12
+8,German_Grand_Prix,hockenheimring,Hockenheimring,Hockenheim,Germany,49.3278,8.56583,1987-07-26
+9,Hungarian_Grand_Prix,hungaroring,Hungaroring,Budapest,Hungary,47.5789,19.2486,1987-08-09
+10,Austrian_Grand_Prix,osterreichring,A1-Ring,Spielburg,Austria,47.2197,14.7647,1987-08-16
+11,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,45.6156,9.28111,1987-09-06
+12,Portuguese_Grand_Prix,estoril,Autodromo do Estoril,Estoril,Portugal,38.7506,-9.39417,1987-09-20
+13,Spanish_Grand_Prix,jerez,Circuito de Jerez,Jerez de la Frontera,Spain,36.7083,-6.03417,1987-09-27
+14,Mexican_Grand_Prix,rodriguez,Autodromo Hermanos Rodriguez,Mexico City,Mexico,19.4042,-99.0907,1987-10-18
+15,Japanese_Grand_Prix,suzuka,Suzuka Circuit,Suzuka,Japan,34.8431,136.541,1987-11-01
+16,Australian_Grand_Prix,adelaide,Adelaide Street Circuit,Adelaide,Australia,-34.9272,138.617,1987-11-15

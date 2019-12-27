@@ -1,19 +1,19 @@
-Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Date
-1,Australian_Grand_Prix,albert_park,Albert Park Grand Prix Circuit,Melbourne,Australia,2004-03-07
-2,Malaysian_Grand_Prix,sepang,Sepang International Circuit,Kuala Lumpur,Malaysia,2004-03-21
-3,Bahrain_Grand_Prix,bahrain,Bahrain International Circuit,Sakhir,Bahrain,2004-04-04
-4,San_Marino_Grand_Prix,imola,Autodromo Enzo e Dino Ferrari,Imola,Italy,2004-04-25
-5,Spanish_Grand_Prix,catalunya,Circuit de Barcelona-Catalunya,Montmelo,Spain,2004-05-09
-6,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,2004-05-23
-7,European_Grand_Prix,nurburgring,Nurburgring,Nurburg,Germany,2004-05-30
-8,Canadian_Grand_Prix,villeneuve,Circuit Gilles Villeneuve,Montreal,Canada,2004-06-13
-9,United_States_Grand_Prix,indianapolis,Indianapolis Motor Speedway,Indianapolis,USA,2004-06-20
-10,French_Grand_Prix,magny_cours,Circuit de Nevers Magny-Cours,Magny Cours,France,2004-07-04
-11,British_Grand_Prix,silverstone,Silverstone Circuit,Silverstone,UK,2004-07-11
-12,German_Grand_Prix,hockenheimring,Hockenheimring,Hockenheim,Germany,2004-07-25
-13,Hungarian_Grand_Prix,hungaroring,Hungaroring,Budapest,Hungary,2004-08-15
-14,Belgian_Grand_Prix,spa,Circuit de Spa-Francorchamps,Spa,Belgium,2004-08-29
-15,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,2004-09-12
-16,Chinese_Grand_Prix,shanghai,Shanghai International Circuit,Shanghai,China,2004-09-26
-17,Japanese_Grand_Prix,suzuka,Suzuka Circuit,Suzuka,Japan,2004-10-10
-18,Brazilian_Grand_Prix,interlagos,Autodromo Jose Carlos Pace,Sao Paulo,Brazil,2004-10-24
+Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Latitude,Longitude,Date
+1,Australian_Grand_Prix,albert_park,Albert Park Grand Prix Circuit,Melbourne,Australia,-37.8497,144.968,2004-03-07
+2,Malaysian_Grand_Prix,sepang,Sepang International Circuit,Kuala Lumpur,Malaysia,2.76083,101.738,2004-03-21
+3,Bahrain_Grand_Prix,bahrain,Bahrain International Circuit,Sakhir,Bahrain,26.0325,50.5106,2004-04-04
+4,San_Marino_Grand_Prix,imola,Autodromo Enzo e Dino Ferrari,Imola,Italy,44.3439,11.7167,2004-04-25
+5,Spanish_Grand_Prix,catalunya,Circuit de Barcelona-Catalunya,Montmelo,Spain,41.57,2.26111,2004-05-09
+6,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,43.7347,7.42056,2004-05-23
+7,European_Grand_Prix,nurburgring,Nurburgring,Nurburg,Germany,50.3356,6.9475,2004-05-30
+8,Canadian_Grand_Prix,villeneuve,Circuit Gilles Villeneuve,Montreal,Canada,45.5,-73.5228,2004-06-13
+9,United_States_Grand_Prix,indianapolis,Indianapolis Motor Speedway,Indianapolis,USA,39.795,-86.2347,2004-06-20
+10,French_Grand_Prix,magny_cours,Circuit de Nevers Magny-Cours,Magny Cours,France,46.8642,3.16361,2004-07-04
+11,British_Grand_Prix,silverstone,Silverstone Circuit,Silverstone,UK,52.0786,-1.01694,2004-07-11
+12,German_Grand_Prix,hockenheimring,Hockenheimring,Hockenheim,Germany,49.3278,8.56583,2004-07-25
+13,Hungarian_Grand_Prix,hungaroring,Hungaroring,Budapest,Hungary,47.5789,19.2486,2004-08-15
+14,Belgian_Grand_Prix,spa,Circuit de Spa-Francorchamps,Spa,Belgium,50.4372,5.97139,2004-08-29
+15,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,45.6156,9.28111,2004-09-12
+16,Chinese_Grand_Prix,shanghai,Shanghai International Circuit,Shanghai,China,31.3389,121.22,2004-09-26
+17,Japanese_Grand_Prix,suzuka,Suzuka Circuit,Suzuka,Japan,34.8431,136.541,2004-10-10
+18,Brazilian_Grand_Prix,interlagos,Autodromo Jose Carlos Pace,Sao Paulo,Brazil,-23.7036,-46.6997,2004-10-24

@@ -1,15 +1,15 @@
-Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Date
-1,Argentine_Grand_Prix,galvez,Autodromo Juan y Oscar Galvez,Buenos Aires,Argentina,1975-01-12
-2,Brazilian_Grand_Prix,interlagos,Autodromo Jose Carlos Pace,Sao Paulo,Brazil,1975-01-26
-3,South_African_Grand_Prix,kyalami,Kyalami,Midrand,South Africa,1975-03-01
-4,Spanish_Grand_Prix,montjuic,Montjuic,Barcelona,Spain,1975-04-27
-5,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,1975-05-11
-6,Belgian_Grand_Prix,zolder,Zolder,Heusden-Zolder,Belgium,1975-05-25
-7,Swedish_Grand_Prix,anderstorp,Scandinavian Raceway,Anderstorp,Sweden,1975-06-08
-8,Dutch_Grand_Prix,zandvoort,Circuit Park Zandvoort,Zandvoort,Netherlands,1975-06-22
-9,French_Grand_Prix,ricard,Circuit Paul Ricard,Le Castellet,France,1975-07-06
-10,British_Grand_Prix,silverstone,Silverstone Circuit,Silverstone,UK,1975-07-19
-11,German_Grand_Prix,nurburgring,Nurburgring,Nurburg,Germany,1975-08-03
-12,Austrian_Grand_Prix,osterreichring,A1-Ring,Spielburg,Austria,1975-08-17
-13,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,1975-09-07
-14,United_States_Grand_Prix,watkins_glen,Watkins Glen,New York State,USA,1975-10-05
+Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Latitude,Longitude,Date
+1,Argentine_Grand_Prix,galvez,Autodromo Juan y Oscar Galvez,Buenos Aires,Argentina,-34.6943,-58.4593,1975-01-12
+2,Brazilian_Grand_Prix,interlagos,Autodromo Jose Carlos Pace,Sao Paulo,Brazil,-23.7036,-46.6997,1975-01-26
+3,South_African_Grand_Prix,kyalami,Kyalami,Midrand,South Africa,-25.9894,28.0767,1975-03-01
+4,Spanish_Grand_Prix,montjuic,Montjuic,Barcelona,Spain,41.3664,2.15167,1975-04-27
+5,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,43.7347,7.42056,1975-05-11
+6,Belgian_Grand_Prix,zolder,Zolder,Heusden-Zolder,Belgium,50.9894,5.25694,1975-05-25
+7,Swedish_Grand_Prix,anderstorp,Scandinavian Raceway,Anderstorp,Sweden,57.2653,13.6042,1975-06-08
+8,Dutch_Grand_Prix,zandvoort,Circuit Park Zandvoort,Zandvoort,Netherlands,52.3888,4.54092,1975-06-22
+9,French_Grand_Prix,ricard,Circuit Paul Ricard,Le Castellet,France,43.2506,5.79167,1975-07-06
+10,British_Grand_Prix,silverstone,Silverstone Circuit,Silverstone,UK,52.0786,-1.01694,1975-07-19
+11,German_Grand_Prix,nurburgring,Nurburgring,Nurburg,Germany,50.3356,6.9475,1975-08-03
+12,Austrian_Grand_Prix,osterreichring,A1-Ring,Spielburg,Austria,47.2197,14.7647,1975-08-17
+13,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,45.6156,9.28111,1975-09-07
+14,United_States_Grand_Prix,watkins_glen,Watkins Glen,New York State,USA,42.3369,-76.9272,1975-10-05

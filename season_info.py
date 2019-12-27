@@ -4,6 +4,7 @@ import requests
 import datetime
 from unidecode import unidecode as UnicodeFormatter
 import os
+import bcolors
 
 # Local imports
 import path_configuration
@@ -22,6 +23,8 @@ class Season_Info(object):
         self.Requests = requests
 
     def import_seasons(self, year_to_find=None):
+        print(bcolors.PASS + 'STARTING EXTRACTOR, GETTING SEASONS...' + bcolors.END)
+
         url_list = self.Url.url_season(year_to_find)
         Progress = progress_calculator.ProgressBar(url_list)
 
@@ -35,6 +38,8 @@ class Season_Info(object):
             City = []
             Country = []
             Date = []
+            Latitude = []
+            Longitude = []
 
             page = self.Requests.get(url)
             json = page.json()
@@ -50,11 +55,16 @@ class Season_Info(object):
                 CircuitName.append(UnicodeFormatter(circuit['Circuit']['circuitName']))
                 City.append(UnicodeFormatter(circuit['Circuit']['Location']['locality']))
                 Country.append(UnicodeFormatter(circuit['Circuit']['Location']['country']))
+                Latitude.append(circuit['Circuit']['Location']['lat'])
+                Longitude.append(circuit['Circuit']['Location']['long'])
                 Date.append(circuit['date'])
 
+            # CONSOLE PT
+            print(bcolors.WAITMSG + ' Getting Season Data:' + Season + bcolors.END)
+
             Circuit_Data = {'Round': Round, 'Grand Prix': GrandPrix, 'Circuit ID': CircuitID,
-                            'Circuit Name': CircuitName, 'City': City,
-                            'Country': Country, 'Date': Date}
+                            'Circuit Name': CircuitName, 'City': City, 'Country': Country, 'Latitude': Latitude,
+                            'Longitude': Longitude, 'Date': Date}
             Circuit_DF = pd.DataFrame(data=Circuit_Data)
             Circuit_DF = Circuit_DF.set_index('Round')
 

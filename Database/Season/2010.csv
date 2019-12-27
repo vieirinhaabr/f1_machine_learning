@@ -1,20 +1,20 @@
-Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Date
-1,Bahrain_Grand_Prix,bahrain,Bahrain International Circuit,Sakhir,Bahrain,2010-03-14
-2,Australian_Grand_Prix,albert_park,Albert Park Grand Prix Circuit,Melbourne,Australia,2010-03-28
-3,Malaysian_Grand_Prix,sepang,Sepang International Circuit,Kuala Lumpur,Malaysia,2010-04-04
-4,Chinese_Grand_Prix,shanghai,Shanghai International Circuit,Shanghai,China,2010-04-18
-5,Spanish_Grand_Prix,catalunya,Circuit de Barcelona-Catalunya,Montmelo,Spain,2010-05-09
-6,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,2010-05-16
-7,Turkish_Grand_Prix,istanbul,Istanbul Park,Istanbul,Turkey,2010-05-30
-8,Canadian_Grand_Prix,villeneuve,Circuit Gilles Villeneuve,Montreal,Canada,2010-06-13
-9,European_Grand_Prix,valencia,Valencia Street Circuit,Valencia,Spain,2010-06-27
-10,British_Grand_Prix,silverstone,Silverstone Circuit,Silverstone,UK,2010-07-11
-11,German_Grand_Prix,hockenheimring,Hockenheimring,Hockenheim,Germany,2010-07-25
-12,Hungarian_Grand_Prix,hungaroring,Hungaroring,Budapest,Hungary,2010-08-01
-13,Belgian_Grand_Prix,spa,Circuit de Spa-Francorchamps,Spa,Belgium,2010-08-29
-14,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,2010-09-12
-15,Singapore_Grand_Prix,marina_bay,Marina Bay Street Circuit,Marina Bay,Singapore,2010-09-26
-16,Japanese_Grand_Prix,suzuka,Suzuka Circuit,Suzuka,Japan,2010-10-10
-17,Korean_Grand_Prix,yeongam,Korean International Circuit,Yeongam County,Korea,2010-10-24
-18,Brazilian_Grand_Prix,interlagos,Autodromo Jose Carlos Pace,Sao Paulo,Brazil,2010-11-07
-19,Abu_Dhabi_Grand_Prix,yas_marina,Yas Marina Circuit,Abu Dhabi,UAE,2010-11-14
+Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Latitude,Longitude,Date
+1,Bahrain_Grand_Prix,bahrain,Bahrain International Circuit,Sakhir,Bahrain,26.0325,50.5106,2010-03-14
+2,Australian_Grand_Prix,albert_park,Albert Park Grand Prix Circuit,Melbourne,Australia,-37.8497,144.968,2010-03-28
+3,Malaysian_Grand_Prix,sepang,Sepang International Circuit,Kuala Lumpur,Malaysia,2.76083,101.738,2010-04-04
+4,Chinese_Grand_Prix,shanghai,Shanghai International Circuit,Shanghai,China,31.3389,121.22,2010-04-18
+5,Spanish_Grand_Prix,catalunya,Circuit de Barcelona-Catalunya,Montmelo,Spain,41.57,2.26111,2010-05-09
+6,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,43.7347,7.42056,2010-05-16
+7,Turkish_Grand_Prix,istanbul,Istanbul Park,Istanbul,Turkey,40.9517,29.405,2010-05-30
+8,Canadian_Grand_Prix,villeneuve,Circuit Gilles Villeneuve,Montreal,Canada,45.5,-73.5228,2010-06-13
+9,European_Grand_Prix,valencia,Valencia Street Circuit,Valencia,Spain,39.4589,-0.331667,2010-06-27
+10,British_Grand_Prix,silverstone,Silverstone Circuit,Silverstone,UK,52.0786,-1.01694,2010-07-11
+11,German_Grand_Prix,hockenheimring,Hockenheimring,Hockenheim,Germany,49.3278,8.56583,2010-07-25
+12,Hungarian_Grand_Prix,hungaroring,Hungaroring,Budapest,Hungary,47.5789,19.2486,2010-08-01
+13,Belgian_Grand_Prix,spa,Circuit de Spa-Francorchamps,Spa,Belgium,50.4372,5.97139,2010-08-29
+14,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,45.6156,9.28111,2010-09-12
+15,Singapore_Grand_Prix,marina_bay,Marina Bay Street Circuit,Marina Bay,Singapore,1.2914,103.864,2010-09-26
+16,Japanese_Grand_Prix,suzuka,Suzuka Circuit,Suzuka,Japan,34.8431,136.541,2010-10-10
+17,Korean_Grand_Prix,yeongam,Korean International Circuit,Yeongam County,Korea,34.7333,126.417,2010-10-24
+18,Brazilian_Grand_Prix,interlagos,Autodromo Jose Carlos Pace,Sao Paulo,Brazil,-23.7036,-46.6997,2010-11-07
+19,Abu_Dhabi_Grand_Prix,yas_marina,Yas Marina Circuit,Abu Dhabi,UAE,24.4672,54.6031,2010-11-14

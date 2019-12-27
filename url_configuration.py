@@ -3,7 +3,13 @@ import datetime
 
 class Url_builder(object):
     Ergast = "https://ergast.com/api/f1/"
-    F1 = ""
+    F1_1 = "https://livetiming.formula1.com/static/"
+    F1_2 = "_Race/SPFeed.json"
+
+    def f1_url(self, year, date, gp_name):
+        url = self.F1_1 + str(year) + "/" + str(date) + "_" + gp_name + "/" + str(date) + self.F1_2
+
+        return url
 
     def url_season(self, year=None):
 
@@ -64,5 +70,8 @@ class Url_builder(object):
     def url_lapbylap(self, round, year):
         return self.Ergast + str(year) + '/' + str(round) + '/' + 'laps/', '.json?limit=1000'
 
-    def driver_standings(self, round, year):
+    def url_driver_standings(self, round, year):
         return self.Ergast + str(year) + '/' + str(round) + '/' + 'driverStandings.json?limit=1000'
+
+    def url_status(self, round, year):
+        return self.Ergast + str(year) + '/' + str(round) + '/' + 'status.json?limit=1000'

@@ -5,7 +5,7 @@ from general_configuration import General_Config
 
 if __name__ == '__main__':
     # Season = Season_Info()
-    # Season.import_seasons(2020)
+    # Season.import_seasons()
     GP = GrandPrix()
     GP.import_grand_prix()
     # Config = General_Config()

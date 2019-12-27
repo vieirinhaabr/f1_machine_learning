@@ -52,16 +52,17 @@ class GrandPrix(object):
             if Date_obj[i] < datetime.datetime.now():
                 # METHOD CALLS
                 print(bcolors.PASS + 'STARTING EXTRACTOR, GETTING FROM', GrandPrix[i], 'DATE:', Date[i] + bcolors.END)
-                self.drivers_csv(Round[i], Date_obj[i].year, GrandPrix[i])
-                self.contructors_csv(Round[i], Date_obj[i].year, GrandPrix[i])
-                self.pitstops_times_csv(Round[i], Date_obj[i].year, GrandPrix[i])
-                self.result_csv(Round[i], Date_obj[i].year, GrandPrix[i])
-                self.by_lap_csv(Round[i], Date_obj[i].year, GrandPrix[i])
-                self.current_driver_standings(Round[i], Date_obj[i].year, GrandPrix[i])
+                # self.drivers_csv(Round[i], Date_obj[i].year, GrandPrix[i])
+                # self.contructors_csv(Round[i], Date_obj[i].year, GrandPrix[i])
+                # self.pitstops_times_csv(Round[i], Date_obj[i].year, GrandPrix[i])
+                # self.result_csv(Round[i], Date_obj[i].year, GrandPrix[i])
+                # self.by_lap_csv(Round[i], Date_obj[i].year, GrandPrix[i])
+                # self.current_driver_standings(Round[i], Date_obj[i].year, GrandPrix[i])
+                # self.status(Round[i], Date_obj[i].year, GrandPrix[i])
 
                 if Date_obj[i].year > 2017:
-                    # get data from f1
-                    print(' ')
+                    url = self.Url.f1_url(Date_obj[i].year, Date_obj[i].date(), GrandPrix[i])
+                    self.load_data_from_f1(url, Date_obj[i].year, GrandPrix[i])
 
             Progress.get_progress_bar()
             i = i + 1
@@ -218,18 +219,18 @@ class GrandPrix(object):
                 # AVERAGE SPEED
                 AverageSpeed.append(result['FastestLap']['AverageSpeed']['speed'])
 
-        Initial_Ps_Dict = {'Initials Positions': DriverGridPosition, 'DriverID': DriverID}
+        Initial_Ps_Dict = {'Positions': DriverGridPosition, 'DriverID': DriverID}
         Initial_Ps_Data = pd.DataFrame(data=Initial_Ps_Dict)
-        Initial_Ps_Data = Initial_Ps_Data.set_index('Initials Positions')
+        Initial_Ps_Data = Initial_Ps_Data.set_index('Positions')
 
         Path = self.Path.grandprix_path(year, gp_name, 'InitialPositions')
         Initial_Ps_Data.to_csv(Path)
 
-        Result_Dict = {'Result Positions': DriverPosition, 'DriverID': DriverID, 'ConstructorID': ConstructorID,
-                       'Result Time to Leader': TimeToLeader, 'Result Status': RaceStatus,
-                       'Result Fastest Rank': FastestLapRank, 'Result Average Speed': AverageSpeed}
+        Result_Dict = {'Positions': DriverPosition, 'DriverID': DriverID, 'ConstructorID': ConstructorID,
+                       'Time to Leader': TimeToLeader, 'Status': RaceStatus,
+                       'Fastest Rank': FastestLapRank, 'Average Speed': AverageSpeed}
         Result_Data = pd.DataFrame(data=Result_Dict)
-        Result_Data = Result_Data.set_index('Result Positions')
+        Result_Data = Result_Data.set_index('Positions')
 
         Path = self.Path.grandprix_path(year, gp_name, 'Result')
         Result_Data.to_csv(Path)
@@ -307,11 +308,322 @@ class GrandPrix(object):
         Lap_Positions_Data.to_csv(Path)
 
     def current_driver_standings(self, round, year, gp_name):
-        print(bcolors.ITALIC + 'GETTING DRIVER STANDINGS FROM RACE...', gp_name + bcolors.END)
+        print(bcolors.ITALIC + 'GETTING DRIVER STANDINGS FROM ERGAST...', gp_name + bcolors.END)
 
-        url = self.Url.driver_standings(round, year)
+        url = self.Url.url_driver_standings(round, year)
+
+        # LOAD JSON
+        page = requests.get(url)
+        json = page.json()
+        json = json['MRData']
+        json = json['StandingsTable']
+        json = json['StandingsLists'][0]
+        DriverStandings = json['DriverStandings']
+
+        # STARTING LISTS
+        DriverPosition = []
+        DriverPoints = []
+        DriverWins = []
+        DriverID = []
+        ConstructorID = []
+
+        for driver in DriverStandings:
+            DriverPosition.append(driver['position'])
+            DriverPoints.append(driver['points'])
+            DriverWins.append(driver['wins'])
+            DriverID.append(driver['Driver']['driverId'])
+            ConstructorID.append(driver['Constructors'][-1]['constructorId'])
+
+        DriverStandingsDict = {'Position': DriverPosition, 'DriverID': DriverID, 'ConstructorID': ConstructorID,
+                               'Wins': DriverWins, 'Points': DriverPoints}
+
+        DriverStandingsData = pd.DataFrame(data=DriverStandingsDict)
+        DriverStandingsData = DriverStandingsData.set_index('Position')
+
+        Path = self.Path.standings_path(year)
+        DriverStandingsData.to_csv(Path)
+
+    def status(self, round, year, gp_name):
+        print(bcolors.ITALIC + 'GETTING STATUS FROM ERGAST...', gp_name + bcolors.END)
+
+        url = self.Url.url_status(round, year)
+
+        # LOAD JSON
+        page = requests.get(url)
+        json = page.json()
+        json = json['MRData']
+        json = json['StatusTable']
+        Status = json['Status']
+
+        # STARTING LISTS
+        StatusID = []
+        StatusDescription = []
+        StatusOccurrences = []
+
+        for state in Status:
+            StatusID.append(state['statusId'])
+            StatusDescription.append(state['status'])
+            StatusOccurrences.append(state['count'])
+
+        StatusDict = {'StatusID': StatusID, 'Status Description': StatusDescription,
+                      'Status Occurrences': StatusOccurrences}
+
+        StatusData = pd.DataFrame(data=StatusDict)
+        StatusData = StatusData.set_index('StatusID')
+
+        Path = self.Path.grandprix_path(year, gp_name, 'RaceStatus')
+        StatusData.to_csv(Path)
+
+    def load_data_from_f1(self, url, year, gp_name):
+        print(bcolors.ITALIC + 'GETTING SOME DATA FROM F1...', gp_name + bcolors.END)
 
         page = requests.get(url)
         json = page.json()
 
-        print(json)
+        def for_loop_by_time(json):
+            Time = []
+            Something = []
+
+            i = 0
+            for value in json:
+                if i == 0:
+                    Time.append(value)
+                    i = 1
+                else:
+                    Something.append(value)
+                    i = 0
+
+            return Time, Something
+
+        def weather(json):
+            json = json['Weather']
+            json = json['graph']
+            weather_data = json['data']
+
+            def temperature(json):
+                def temp_df(json, description):
+                    Time, Temp = for_loop_by_time(json)
+
+                    TrackTempDict = {"Time": Time, description: Temp}
+
+                    TrackTempData = pd.DataFrame(data=TrackTempDict)
+                    TrackTempData = TrackTempData.set_index('Time')
+
+                    return TrackTempData
+
+                def track_temp(json):
+                    json = json['pTrack']
+                    TrackTempData = temp_df(json, "Track Temperature")
+
+                    Path = self.Path.grandprix_path(year, gp_name, 'TrackTemp')
+                    TrackTempData.to_csv(Path)
+
+                def air_temp(json):
+                    json = json['pAir']
+                    TrackTempData = temp_df(json, "Air Temperature")
+
+                    Path = self.Path.grandprix_path(year, gp_name, 'AirTemp')
+                    TrackTempData.to_csv(Path)
+
+                track_temp(json)
+                air_temp(json)
+
+            def is_raining(json):
+                json = json['pRaining']
+                Time, Raining = for_loop_by_time(json)
+
+                TrackTemp = {"Time": Time, "Is Raining": Raining}
+
+                TrackTempData = pd.DataFrame(data=TrackTemp)
+                TrackTempData = TrackTempData.set_index('Time')
+
+                Path = self.Path.grandprix_path(year, gp_name, 'Raining')
+                TrackTempData.to_csv(Path)
+
+            def wind_speed(json):
+                json = json['pWind Speed']
+
+                Time, Wind_Speed = for_loop_by_time(json)
+
+                TrackTemp = {"Time": Time, "Wind Speed": Wind_Speed}
+
+                TrackTempData = pd.DataFrame(data=TrackTemp)
+                TrackTempData = TrackTempData.set_index('Time')
+
+                Path = self.Path.grandprix_path(year, gp_name, 'Wind_Speed')
+                TrackTempData.to_csv(Path)
+
+            def wind_direction(json):
+                json = json['pWind Dir']
+
+                Time, Wind_Direction = for_loop_by_time(json)
+
+                TrackTemp = {"Time": Time, "Wind Direction": Wind_Direction}
+
+                TrackTempData = pd.DataFrame(data=TrackTemp)
+                TrackTempData = TrackTempData.set_index('Time')
+
+                Path = self.Path.grandprix_path(year, gp_name, 'Wind_Direction')
+                TrackTempData.to_csv(Path)
+
+            def humidity(json):
+                json = json['pHumidity']
+
+                Time, Humidity = for_loop_by_time(json)
+
+                TrackTemp = {"Time": Time, "Humidity": Humidity}
+
+                TrackTempData = pd.DataFrame(data=TrackTemp)
+                TrackTempData = TrackTempData.set_index('Time')
+
+                Path = self.Path.grandprix_path(year, gp_name, 'Humidity')
+                TrackTempData.to_csv(Path)
+
+            def air_pressure(json):
+                json = json['pPressure']
+
+                Time, Air_Pressure = for_loop_by_time(json)
+
+                TrackTemp = {"Time": Time, "Air Pressure": Air_Pressure}
+
+                TrackTempData = pd.DataFrame(data=TrackTemp)
+                TrackTempData = TrackTempData.set_index('Time')
+
+                Path = self.Path.grandprix_path(year, gp_name, 'Air_Pressure')
+                TrackTempData.to_csv(Path)
+
+            temperature(weather_data)
+            is_raining(weather_data)
+            wind_speed(weather_data)
+            wind_direction(weather_data)
+            humidity(weather_data)
+            air_pressure(weather_data)
+
+        def track_status(json):
+            json = json['Scores']
+            json = json['graph']
+            TrackStatusJson = json['TrackStatus']
+
+            TrackStatus = []
+            Laps = []
+
+            i = 0
+            for lap in TrackStatusJson:
+                if i == 1:
+                    if lap == '':
+                        TrackStatus.append(None)
+                    elif lap == 'Y':
+                        TrackStatus.append('YellowFlag')
+                    elif lap == 'S':
+                        TrackStatus.append('SafetyCar')
+                    elif lap == 'R':
+                        TrackStatus.append('RedFlag')
+                    else:
+                        TrackStatus.append(lap)
+                    i = i - 1
+                else:
+                    Laps.append(lap)
+                    i = i + 1
+
+            TrackStatusDict = {"Lap": Laps, "Status": TrackStatus}
+
+            TrackStatusData = pd.DataFrame(data=TrackStatusDict)
+            TrackStatusData = TrackStatusData.set_index('Lap')
+
+            Path = self.Path.grandprix_path(year, gp_name, 'Track_Status')
+            TrackStatusData.to_csv(Path)
+
+        def drivers_performance_points(json):
+            json = json['Scores']
+            json = json['graph']
+            PF_Points = json['Performance']
+
+            DriversID = list(pd.read_csv(self.Path.grandprix_path(year, gp_name, "Drivers"))['Driver ID'])
+            DriversInitials = list(pd.read_csv(self.Path.grandprix_path(year, gp_name, "Drivers"))['Driver Initials'])
+            Laps = list(pd.read_csv(self.Path.grandprix_path(year, gp_name, "Track_Status"))['Lap'][1:])
+
+            DriverPerformancePointsDict = {}
+            DriverPerformancePointsDict['Lap'] = Laps
+
+            counter = 0
+            for Driver in DriversInitials:
+                i = 0
+                Performance_Gap = []
+
+                for Performance in PF_Points['p'+Driver]:
+                    if i == 0:
+                        i = i + 1
+                    else:
+                        Performance_Gap.append(Performance)
+                        i = i - 1
+
+                while Performance_Gap.__len__() < Laps.__len__():
+                    Performance_Gap.append(None)
+
+                DriverPerformancePointsDict[DriversID[counter]] = Performance_Gap
+                counter = counter + 1
+
+            DriverPerformanceData = pd.DataFrame(data=DriverPerformancePointsDict)
+            DriverPerformanceData = DriverPerformanceData.set_index('Lap')
+
+            Path = self.Path.grandprix_path(year, gp_name, 'Drivers_Performance')
+            DriverPerformanceData.to_csv(Path)
+
+        def highest_speed(json):
+            def order_driver_list(json):
+                json = json['init']
+                json = json['data']
+                Drivers_json = json['Drivers']
+
+                Drivers_InOrder = []
+                Drivers_Dict = {}
+                Drivers_Ordered = []
+
+                for Driver in Drivers_json:
+                    Drivers_InOrder.append(Driver['Initials'])
+
+                DriversID = list(pd.read_csv(self.Path.grandprix_path(year, gp_name, "Drivers"))['Driver ID'])
+                DriversInitials = list(pd.read_csv(self.Path.grandprix_path(year, gp_name, "Drivers"))['Driver Initials'])
+
+                i = 0
+                for Driver in DriversInitials:
+                    Drivers_Dict[Driver] = DriversID[i]
+                    i = i + 1
+
+                for Driver in Drivers_InOrder:
+                    Drivers_Ordered.append(Drivers_Dict[Driver])
+
+                return Drivers_Ordered
+
+            temp = json['best']
+            temp = temp['data']
+            temp = temp['DR']
+
+            Highest_Speed_Sector_1 = []
+            Highest_Speed_Sector_2 = []
+            Highest_Speed_Sector_3 = []
+
+            for item in temp:
+                i = 0
+                for content in item['B']:
+                    if i == 13:
+                        Highest_Speed_Sector_1.append(content)
+                    elif i == 16:
+                        Highest_Speed_Sector_2.append(content)
+                    elif i == 19:
+                        Highest_Speed_Sector_3.append(content)
+                    i = i + 1
+
+            SpeedDict = {'Driver': order_driver_list(json), 'Speed S1': Highest_Speed_Sector_1,
+                         'Speed S2': Highest_Speed_Sector_2, 'Speed S3': Highest_Speed_Sector_3}
+
+            SpeedData = pd.DataFrame(data=SpeedDict)
+            SpeedData = SpeedData.set_index('Driver')
+
+            Path = self.Path.grandprix_path(year, gp_name, 'Highest_Speed')
+            SpeedData.to_csv(Path)
+
+        # weather(json)
+        # track_status(json)
+        # drivers_performance_points(json)
+        highest_speed(json)

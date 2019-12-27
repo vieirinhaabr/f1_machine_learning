@@ -1,18 +1,18 @@
-Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Date
-1,Argentine_Grand_Prix,galvez,Autodromo Juan y Oscar Galvez,Buenos Aires,Argentina,1977-01-09
-2,Brazilian_Grand_Prix,interlagos,Autodromo Jose Carlos Pace,Sao Paulo,Brazil,1977-01-23
-3,South_African_Grand_Prix,kyalami,Kyalami,Midrand,South Africa,1977-03-05
-4,United_States_Grand_Prix_West,long_beach,Long Beach,California,USA,1977-04-03
-5,Spanish_Grand_Prix,jarama,Jarama,Madrid,Spain,1977-05-08
-6,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,1977-05-22
-7,Belgian_Grand_Prix,zolder,Zolder,Heusden-Zolder,Belgium,1977-06-05
-8,Swedish_Grand_Prix,anderstorp,Scandinavian Raceway,Anderstorp,Sweden,1977-06-19
-9,French_Grand_Prix,dijon,Dijon-Prenois,Dijon,France,1977-07-03
-10,British_Grand_Prix,silverstone,Silverstone Circuit,Silverstone,UK,1977-07-16
-11,German_Grand_Prix,hockenheimring,Hockenheimring,Hockenheim,Germany,1977-07-31
-12,Austrian_Grand_Prix,osterreichring,A1-Ring,Spielburg,Austria,1977-08-14
-13,Dutch_Grand_Prix,zandvoort,Circuit Park Zandvoort,Zandvoort,Netherlands,1977-08-28
-14,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,1977-09-11
-15,United_States_Grand_Prix,watkins_glen,Watkins Glen,New York State,USA,1977-10-02
-16,Canadian_Grand_Prix,mosport,Mosport International Raceway,Ontario,Canada,1977-10-09
-17,Japanese_Grand_Prix,fuji,Fuji Speedway,Oyama,Japan,1977-10-23
+Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Latitude,Longitude,Date
+1,Argentine_Grand_Prix,galvez,Autodromo Juan y Oscar Galvez,Buenos Aires,Argentina,-34.6943,-58.4593,1977-01-09
+2,Brazilian_Grand_Prix,interlagos,Autodromo Jose Carlos Pace,Sao Paulo,Brazil,-23.7036,-46.6997,1977-01-23
+3,South_African_Grand_Prix,kyalami,Kyalami,Midrand,South Africa,-25.9894,28.0767,1977-03-05
+4,United_States_Grand_Prix_West,long_beach,Long Beach,California,USA,33.7651,-118.189,1977-04-03
+5,Spanish_Grand_Prix,jarama,Jarama,Madrid,Spain,40.6171,-3.58558,1977-05-08
+6,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,43.7347,7.42056,1977-05-22
+7,Belgian_Grand_Prix,zolder,Zolder,Heusden-Zolder,Belgium,50.9894,5.25694,1977-06-05
+8,Swedish_Grand_Prix,anderstorp,Scandinavian Raceway,Anderstorp,Sweden,57.2653,13.6042,1977-06-19
+9,French_Grand_Prix,dijon,Dijon-Prenois,Dijon,France,47.3625,4.89913,1977-07-03
+10,British_Grand_Prix,silverstone,Silverstone Circuit,Silverstone,UK,52.0786,-1.01694,1977-07-16
+11,German_Grand_Prix,hockenheimring,Hockenheimring,Hockenheim,Germany,49.3278,8.56583,1977-07-31
+12,Austrian_Grand_Prix,osterreichring,A1-Ring,Spielburg,Austria,47.2197,14.7647,1977-08-14
+13,Dutch_Grand_Prix,zandvoort,Circuit Park Zandvoort,Zandvoort,Netherlands,52.3888,4.54092,1977-08-28
+14,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,45.6156,9.28111,1977-09-11
+15,United_States_Grand_Prix,watkins_glen,Watkins Glen,New York State,USA,42.3369,-76.9272,1977-10-02
+16,Canadian_Grand_Prix,mosport,Mosport International Raceway,Ontario,Canada,44.0481,-78.6756,1977-10-09
+17,Japanese_Grand_Prix,fuji,Fuji Speedway,Oyama,Japan,35.3717,138.927,1977-10-23

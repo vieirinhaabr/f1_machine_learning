@@ -1,15 +1,15 @@
-Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Date
-1,Argentine_Grand_Prix,galvez,Autodromo Juan y Oscar Galvez,Buenos Aires,Argentina,1980-01-13
-2,Brazilian_Grand_Prix,interlagos,Autodromo Jose Carlos Pace,Sao Paulo,Brazil,1980-01-27
-3,South_African_Grand_Prix,kyalami,Kyalami,Midrand,South Africa,1980-03-01
-4,United_States_Grand_Prix_West,long_beach,Long Beach,California,USA,1980-03-30
-5,Belgian_Grand_Prix,zolder,Zolder,Heusden-Zolder,Belgium,1980-05-04
-6,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,1980-05-18
-7,French_Grand_Prix,ricard,Circuit Paul Ricard,Le Castellet,France,1980-06-29
-8,British_Grand_Prix,brands_hatch,Brands Hatch,Kent,UK,1980-07-13
-9,German_Grand_Prix,hockenheimring,Hockenheimring,Hockenheim,Germany,1980-08-10
-10,Austrian_Grand_Prix,osterreichring,A1-Ring,Spielburg,Austria,1980-08-17
-11,Dutch_Grand_Prix,zandvoort,Circuit Park Zandvoort,Zandvoort,Netherlands,1980-08-31
-12,Italian_Grand_Prix,imola,Autodromo Enzo e Dino Ferrari,Imola,Italy,1980-09-14
-13,Canadian_Grand_Prix,villeneuve,Circuit Gilles Villeneuve,Montreal,Canada,1980-09-28
-14,United_States_Grand_Prix,watkins_glen,Watkins Glen,New York State,USA,1980-10-05
+Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Latitude,Longitude,Date
+1,Argentine_Grand_Prix,galvez,Autodromo Juan y Oscar Galvez,Buenos Aires,Argentina,-34.6943,-58.4593,1980-01-13
+2,Brazilian_Grand_Prix,interlagos,Autodromo Jose Carlos Pace,Sao Paulo,Brazil,-23.7036,-46.6997,1980-01-27
+3,South_African_Grand_Prix,kyalami,Kyalami,Midrand,South Africa,-25.9894,28.0767,1980-03-01
+4,United_States_Grand_Prix_West,long_beach,Long Beach,California,USA,33.7651,-118.189,1980-03-30
+5,Belgian_Grand_Prix,zolder,Zolder,Heusden-Zolder,Belgium,50.9894,5.25694,1980-05-04
+6,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,43.7347,7.42056,1980-05-18
+7,French_Grand_Prix,ricard,Circuit Paul Ricard,Le Castellet,France,43.2506,5.79167,1980-06-29
+8,British_Grand_Prix,brands_hatch,Brands Hatch,Kent,UK,51.3569,0.263056,1980-07-13
+9,German_Grand_Prix,hockenheimring,Hockenheimring,Hockenheim,Germany,49.3278,8.56583,1980-08-10
+10,Austrian_Grand_Prix,osterreichring,A1-Ring,Spielburg,Austria,47.2197,14.7647,1980-08-17
+11,Dutch_Grand_Prix,zandvoort,Circuit Park Zandvoort,Zandvoort,Netherlands,52.3888,4.54092,1980-08-31
+12,Italian_Grand_Prix,imola,Autodromo Enzo e Dino Ferrari,Imola,Italy,44.3439,11.7167,1980-09-14
+13,Canadian_Grand_Prix,villeneuve,Circuit Gilles Villeneuve,Montreal,Canada,45.5,-73.5228,1980-09-28
+14,United_States_Grand_Prix,watkins_glen,Watkins Glen,New York State,USA,42.3369,-76.9272,1980-10-05

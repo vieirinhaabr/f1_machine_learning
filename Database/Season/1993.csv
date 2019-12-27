@@ -1,17 +1,17 @@
-Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Date
-1,South_African_Grand_Prix,kyalami,Kyalami,Midrand,South Africa,1993-03-14
-2,Brazilian_Grand_Prix,interlagos,Autodromo Jose Carlos Pace,Sao Paulo,Brazil,1993-03-28
-3,European_Grand_Prix,donington,Donington Park,Castle Donington,UK,1993-04-11
-4,San_Marino_Grand_Prix,imola,Autodromo Enzo e Dino Ferrari,Imola,Italy,1993-04-25
-5,Spanish_Grand_Prix,catalunya,Circuit de Barcelona-Catalunya,Montmelo,Spain,1993-05-09
-6,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,1993-05-23
-7,Canadian_Grand_Prix,villeneuve,Circuit Gilles Villeneuve,Montreal,Canada,1993-06-13
-8,French_Grand_Prix,magny_cours,Circuit de Nevers Magny-Cours,Magny Cours,France,1993-07-04
-9,British_Grand_Prix,silverstone,Silverstone Circuit,Silverstone,UK,1993-07-11
-10,German_Grand_Prix,hockenheimring,Hockenheimring,Hockenheim,Germany,1993-07-25
-11,Hungarian_Grand_Prix,hungaroring,Hungaroring,Budapest,Hungary,1993-08-15
-12,Belgian_Grand_Prix,spa,Circuit de Spa-Francorchamps,Spa,Belgium,1993-08-29
-13,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,1993-09-12
-14,Portuguese_Grand_Prix,estoril,Autodromo do Estoril,Estoril,Portugal,1993-09-26
-15,Japanese_Grand_Prix,suzuka,Suzuka Circuit,Suzuka,Japan,1993-10-24
-16,Australian_Grand_Prix,adelaide,Adelaide Street Circuit,Adelaide,Australia,1993-11-07
+Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Latitude,Longitude,Date
+1,South_African_Grand_Prix,kyalami,Kyalami,Midrand,South Africa,-25.9894,28.0767,1993-03-14
+2,Brazilian_Grand_Prix,interlagos,Autodromo Jose Carlos Pace,Sao Paulo,Brazil,-23.7036,-46.6997,1993-03-28
+3,European_Grand_Prix,donington,Donington Park,Castle Donington,UK,52.8306,-1.37528,1993-04-11
+4,San_Marino_Grand_Prix,imola,Autodromo Enzo e Dino Ferrari,Imola,Italy,44.3439,11.7167,1993-04-25
+5,Spanish_Grand_Prix,catalunya,Circuit de Barcelona-Catalunya,Montmelo,Spain,41.57,2.26111,1993-05-09
+6,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,43.7347,7.42056,1993-05-23
+7,Canadian_Grand_Prix,villeneuve,Circuit Gilles Villeneuve,Montreal,Canada,45.5,-73.5228,1993-06-13
+8,French_Grand_Prix,magny_cours,Circuit de Nevers Magny-Cours,Magny Cours,France,46.8642,3.16361,1993-07-04
+9,British_Grand_Prix,silverstone,Silverstone Circuit,Silverstone,UK,52.0786,-1.01694,1993-07-11
+10,German_Grand_Prix,hockenheimring,Hockenheimring,Hockenheim,Germany,49.3278,8.56583,1993-07-25
+11,Hungarian_Grand_Prix,hungaroring,Hungaroring,Budapest,Hungary,47.5789,19.2486,1993-08-15
+12,Belgian_Grand_Prix,spa,Circuit de Spa-Francorchamps,Spa,Belgium,50.4372,5.97139,1993-08-29
+13,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,45.6156,9.28111,1993-09-12
+14,Portuguese_Grand_Prix,estoril,Autodromo do Estoril,Estoril,Portugal,38.7506,-9.39417,1993-09-26
+15,Japanese_Grand_Prix,suzuka,Suzuka Circuit,Suzuka,Japan,34.8431,136.541,1993-10-24
+16,Australian_Grand_Prix,adelaide,Adelaide Street Circuit,Adelaide,Australia,-34.9272,138.617,1993-11-07

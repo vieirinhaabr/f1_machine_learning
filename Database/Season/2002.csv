@@ -1,18 +1,18 @@
-Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Date
-1,Australian_Grand_Prix,albert_park,Albert Park Grand Prix Circuit,Melbourne,Australia,2002-03-03
-2,Malaysian_Grand_Prix,sepang,Sepang International Circuit,Kuala Lumpur,Malaysia,2002-03-17
-3,Brazilian_Grand_Prix,interlagos,Autodromo Jose Carlos Pace,Sao Paulo,Brazil,2002-03-31
-4,San_Marino_Grand_Prix,imola,Autodromo Enzo e Dino Ferrari,Imola,Italy,2002-04-14
-5,Spanish_Grand_Prix,catalunya,Circuit de Barcelona-Catalunya,Montmelo,Spain,2002-04-28
-6,Austrian_Grand_Prix,osterreichring,A1-Ring,Spielburg,Austria,2002-05-12
-7,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,2002-05-26
-8,Canadian_Grand_Prix,villeneuve,Circuit Gilles Villeneuve,Montreal,Canada,2002-06-09
-9,European_Grand_Prix,nurburgring,Nurburgring,Nurburg,Germany,2002-06-23
-10,British_Grand_Prix,silverstone,Silverstone Circuit,Silverstone,UK,2002-07-07
-11,French_Grand_Prix,magny_cours,Circuit de Nevers Magny-Cours,Magny Cours,France,2002-07-21
-12,German_Grand_Prix,hockenheimring,Hockenheimring,Hockenheim,Germany,2002-07-28
-13,Hungarian_Grand_Prix,hungaroring,Hungaroring,Budapest,Hungary,2002-08-18
-14,Belgian_Grand_Prix,spa,Circuit de Spa-Francorchamps,Spa,Belgium,2002-09-01
-15,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,2002-09-15
-16,United_States_Grand_Prix,indianapolis,Indianapolis Motor Speedway,Indianapolis,USA,2002-09-29
-17,Japanese_Grand_Prix,suzuka,Suzuka Circuit,Suzuka,Japan,2002-10-13
+Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Latitude,Longitude,Date
+1,Australian_Grand_Prix,albert_park,Albert Park Grand Prix Circuit,Melbourne,Australia,-37.8497,144.968,2002-03-03
+2,Malaysian_Grand_Prix,sepang,Sepang International Circuit,Kuala Lumpur,Malaysia,2.76083,101.738,2002-03-17
+3,Brazilian_Grand_Prix,interlagos,Autodromo Jose Carlos Pace,Sao Paulo,Brazil,-23.7036,-46.6997,2002-03-31
+4,San_Marino_Grand_Prix,imola,Autodromo Enzo e Dino Ferrari,Imola,Italy,44.3439,11.7167,2002-04-14
+5,Spanish_Grand_Prix,catalunya,Circuit de Barcelona-Catalunya,Montmelo,Spain,41.57,2.26111,2002-04-28
+6,Austrian_Grand_Prix,osterreichring,A1-Ring,Spielburg,Austria,47.2197,14.7647,2002-05-12
+7,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,43.7347,7.42056,2002-05-26
+8,Canadian_Grand_Prix,villeneuve,Circuit Gilles Villeneuve,Montreal,Canada,45.5,-73.5228,2002-06-09
+9,European_Grand_Prix,nurburgring,Nurburgring,Nurburg,Germany,50.3356,6.9475,2002-06-23
+10,British_Grand_Prix,silverstone,Silverstone Circuit,Silverstone,UK,52.0786,-1.01694,2002-07-07
+11,French_Grand_Prix,magny_cours,Circuit de Nevers Magny-Cours,Magny Cours,France,46.8642,3.16361,2002-07-21
+12,German_Grand_Prix,hockenheimring,Hockenheimring,Hockenheim,Germany,49.3278,8.56583,2002-07-28
+13,Hungarian_Grand_Prix,hungaroring,Hungaroring,Budapest,Hungary,47.5789,19.2486,2002-08-18
+14,Belgian_Grand_Prix,spa,Circuit de Spa-Francorchamps,Spa,Belgium,50.4372,5.97139,2002-09-01
+15,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,45.6156,9.28111,2002-09-15
+16,United_States_Grand_Prix,indianapolis,Indianapolis Motor Speedway,Indianapolis,USA,39.795,-86.2347,2002-09-29
+17,Japanese_Grand_Prix,suzuka,Suzuka Circuit,Suzuka,Japan,34.8431,136.541,2002-10-13

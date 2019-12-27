@@ -1,17 +1,17 @@
-Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Date
-1,Brazilian_Grand_Prix,jacarepagua,Autodromo Internacional Nelson Piquet,Rio de Janeiro,Brazil,1984-03-25
-2,South_African_Grand_Prix,kyalami,Kyalami,Midrand,South Africa,1984-04-07
-3,Belgian_Grand_Prix,zolder,Zolder,Heusden-Zolder,Belgium,1984-04-29
-4,San_Marino_Grand_Prix,imola,Autodromo Enzo e Dino Ferrari,Imola,Italy,1984-05-06
-5,French_Grand_Prix,dijon,Dijon-Prenois,Dijon,France,1984-05-20
-6,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,1984-06-03
-7,Canadian_Grand_Prix,villeneuve,Circuit Gilles Villeneuve,Montreal,Canada,1984-06-17
-8,Detroit_Grand_Prix,detroit,Detroit Street Circuit,Detroit,USA,1984-06-24
-9,Dallas_Grand_Prix,dallas,Fair Park,Dallas,USA,1984-07-08
-10,British_Grand_Prix,brands_hatch,Brands Hatch,Kent,UK,1984-07-22
-11,German_Grand_Prix,hockenheimring,Hockenheimring,Hockenheim,Germany,1984-08-05
-12,Austrian_Grand_Prix,osterreichring,A1-Ring,Spielburg,Austria,1984-08-19
-13,Dutch_Grand_Prix,zandvoort,Circuit Park Zandvoort,Zandvoort,Netherlands,1984-08-26
-14,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,1984-09-09
-15,European_Grand_Prix,nurburgring,Nurburgring,Nurburg,Germany,1984-10-07
-16,Portuguese_Grand_Prix,estoril,Autodromo do Estoril,Estoril,Portugal,1984-10-21
+Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Latitude,Longitude,Date
+1,Brazilian_Grand_Prix,jacarepagua,Autodromo Internacional Nelson Piquet,Rio de Janeiro,Brazil,-22.9756,-43.395,1984-03-25
+2,South_African_Grand_Prix,kyalami,Kyalami,Midrand,South Africa,-25.9894,28.0767,1984-04-07
+3,Belgian_Grand_Prix,zolder,Zolder,Heusden-Zolder,Belgium,50.9894,5.25694,1984-04-29
+4,San_Marino_Grand_Prix,imola,Autodromo Enzo e Dino Ferrari,Imola,Italy,44.3439,11.7167,1984-05-06
+5,French_Grand_Prix,dijon,Dijon-Prenois,Dijon,France,47.3625,4.89913,1984-05-20
+6,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,43.7347,7.42056,1984-06-03
+7,Canadian_Grand_Prix,villeneuve,Circuit Gilles Villeneuve,Montreal,Canada,45.5,-73.5228,1984-06-17
+8,Detroit_Grand_Prix,detroit,Detroit Street Circuit,Detroit,USA,42.3298,-83.0401,1984-06-24
+9,Dallas_Grand_Prix,dallas,Fair Park,Dallas,USA,32.7774,-96.7587,1984-07-08
+10,British_Grand_Prix,brands_hatch,Brands Hatch,Kent,UK,51.3569,0.263056,1984-07-22
+11,German_Grand_Prix,hockenheimring,Hockenheimring,Hockenheim,Germany,49.3278,8.56583,1984-08-05
+12,Austrian_Grand_Prix,osterreichring,A1-Ring,Spielburg,Austria,47.2197,14.7647,1984-08-19
+13,Dutch_Grand_Prix,zandvoort,Circuit Park Zandvoort,Zandvoort,Netherlands,52.3888,4.54092,1984-08-26
+14,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,45.6156,9.28111,1984-09-09
+15,European_Grand_Prix,nurburgring,Nurburgring,Nurburg,Germany,50.3356,6.9475,1984-10-07
+16,Portuguese_Grand_Prix,estoril,Autodromo do Estoril,Estoril,Portugal,38.7506,-9.39417,1984-10-21

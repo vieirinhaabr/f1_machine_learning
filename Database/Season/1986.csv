@@ -1,17 +1,17 @@
-Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Date
-1,Brazilian_Grand_Prix,jacarepagua,Autodromo Internacional Nelson Piquet,Rio de Janeiro,Brazil,1986-03-23
-2,Spanish_Grand_Prix,jerez,Circuito de Jerez,Jerez de la Frontera,Spain,1986-04-13
-3,San_Marino_Grand_Prix,imola,Autodromo Enzo e Dino Ferrari,Imola,Italy,1986-04-27
-4,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,1986-05-11
-5,Belgian_Grand_Prix,spa,Circuit de Spa-Francorchamps,Spa,Belgium,1986-05-25
-6,Canadian_Grand_Prix,villeneuve,Circuit Gilles Villeneuve,Montreal,Canada,1986-06-15
-7,Detroit_Grand_Prix,detroit,Detroit Street Circuit,Detroit,USA,1986-06-22
-8,French_Grand_Prix,ricard,Circuit Paul Ricard,Le Castellet,France,1986-07-06
-9,British_Grand_Prix,brands_hatch,Brands Hatch,Kent,UK,1986-07-13
-10,German_Grand_Prix,hockenheimring,Hockenheimring,Hockenheim,Germany,1986-07-27
-11,Hungarian_Grand_Prix,hungaroring,Hungaroring,Budapest,Hungary,1986-08-10
-12,Austrian_Grand_Prix,osterreichring,A1-Ring,Spielburg,Austria,1986-08-17
-13,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,1986-09-07
-14,Portuguese_Grand_Prix,estoril,Autodromo do Estoril,Estoril,Portugal,1986-09-21
-15,Mexican_Grand_Prix,rodriguez,Autodromo Hermanos Rodriguez,Mexico City,Mexico,1986-10-12
-16,Australian_Grand_Prix,adelaide,Adelaide Street Circuit,Adelaide,Australia,1986-10-26
+Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Latitude,Longitude,Date
+1,Brazilian_Grand_Prix,jacarepagua,Autodromo Internacional Nelson Piquet,Rio de Janeiro,Brazil,-22.9756,-43.395,1986-03-23
+2,Spanish_Grand_Prix,jerez,Circuito de Jerez,Jerez de la Frontera,Spain,36.7083,-6.03417,1986-04-13
+3,San_Marino_Grand_Prix,imola,Autodromo Enzo e Dino Ferrari,Imola,Italy,44.3439,11.7167,1986-04-27
+4,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,43.7347,7.42056,1986-05-11
+5,Belgian_Grand_Prix,spa,Circuit de Spa-Francorchamps,Spa,Belgium,50.4372,5.97139,1986-05-25
+6,Canadian_Grand_Prix,villeneuve,Circuit Gilles Villeneuve,Montreal,Canada,45.5,-73.5228,1986-06-15
+7,Detroit_Grand_Prix,detroit,Detroit Street Circuit,Detroit,USA,42.3298,-83.0401,1986-06-22
+8,French_Grand_Prix,ricard,Circuit Paul Ricard,Le Castellet,France,43.2506,5.79167,1986-07-06
+9,British_Grand_Prix,brands_hatch,Brands Hatch,Kent,UK,51.3569,0.263056,1986-07-13
+10,German_Grand_Prix,hockenheimring,Hockenheimring,Hockenheim,Germany,49.3278,8.56583,1986-07-27
+11,Hungarian_Grand_Prix,hungaroring,Hungaroring,Budapest,Hungary,47.5789,19.2486,1986-08-10
+12,Austrian_Grand_Prix,osterreichring,A1-Ring,Spielburg,Austria,47.2197,14.7647,1986-08-17
+13,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,45.6156,9.28111,1986-09-07
+14,Portuguese_Grand_Prix,estoril,Autodromo do Estoril,Estoril,Portugal,38.7506,-9.39417,1986-09-21
+15,Mexican_Grand_Prix,rodriguez,Autodromo Hermanos Rodriguez,Mexico City,Mexico,19.4042,-99.0907,1986-10-12
+16,Australian_Grand_Prix,adelaide,Adelaide Street Circuit,Adelaide,Australia,-34.9272,138.617,1986-10-26

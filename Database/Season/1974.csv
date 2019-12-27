@@ -1,16 +1,16 @@
-Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Date
-1,Argentine_Grand_Prix,galvez,Autodromo Juan y Oscar Galvez,Buenos Aires,Argentina,1974-01-13
-2,Brazilian_Grand_Prix,interlagos,Autodromo Jose Carlos Pace,Sao Paulo,Brazil,1974-01-27
-3,South_African_Grand_Prix,kyalami,Kyalami,Midrand,South Africa,1974-03-30
-4,Spanish_Grand_Prix,jarama,Jarama,Madrid,Spain,1974-04-28
-5,Belgian_Grand_Prix,nivelles,Nivelles-Baulers,Brussels,Belgium,1974-05-12
-6,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,1974-05-26
-7,Swedish_Grand_Prix,anderstorp,Scandinavian Raceway,Anderstorp,Sweden,1974-06-09
-8,Dutch_Grand_Prix,zandvoort,Circuit Park Zandvoort,Zandvoort,Netherlands,1974-06-23
-9,French_Grand_Prix,dijon,Dijon-Prenois,Dijon,France,1974-07-07
-10,British_Grand_Prix,brands_hatch,Brands Hatch,Kent,UK,1974-07-20
-11,German_Grand_Prix,nurburgring,Nurburgring,Nurburg,Germany,1974-08-04
-12,Austrian_Grand_Prix,osterreichring,A1-Ring,Spielburg,Austria,1974-08-18
-13,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,1974-09-08
-14,Canadian_Grand_Prix,mosport,Mosport International Raceway,Ontario,Canada,1974-09-22
-15,United_States_Grand_Prix,watkins_glen,Watkins Glen,New York State,USA,1974-10-06
+Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Latitude,Longitude,Date
+1,Argentine_Grand_Prix,galvez,Autodromo Juan y Oscar Galvez,Buenos Aires,Argentina,-34.6943,-58.4593,1974-01-13
+2,Brazilian_Grand_Prix,interlagos,Autodromo Jose Carlos Pace,Sao Paulo,Brazil,-23.7036,-46.6997,1974-01-27
+3,South_African_Grand_Prix,kyalami,Kyalami,Midrand,South Africa,-25.9894,28.0767,1974-03-30
+4,Spanish_Grand_Prix,jarama,Jarama,Madrid,Spain,40.6171,-3.58558,1974-04-28
+5,Belgian_Grand_Prix,nivelles,Nivelles-Baulers,Brussels,Belgium,50.6211,4.32694,1974-05-12
+6,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,43.7347,7.42056,1974-05-26
+7,Swedish_Grand_Prix,anderstorp,Scandinavian Raceway,Anderstorp,Sweden,57.2653,13.6042,1974-06-09
+8,Dutch_Grand_Prix,zandvoort,Circuit Park Zandvoort,Zandvoort,Netherlands,52.3888,4.54092,1974-06-23
+9,French_Grand_Prix,dijon,Dijon-Prenois,Dijon,France,47.3625,4.89913,1974-07-07
+10,British_Grand_Prix,brands_hatch,Brands Hatch,Kent,UK,51.3569,0.263056,1974-07-20
+11,German_Grand_Prix,nurburgring,Nurburgring,Nurburg,Germany,50.3356,6.9475,1974-08-04
+12,Austrian_Grand_Prix,osterreichring,A1-Ring,Spielburg,Austria,47.2197,14.7647,1974-08-18
+13,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,45.6156,9.28111,1974-09-08
+14,Canadian_Grand_Prix,mosport,Mosport International Raceway,Ontario,Canada,44.0481,-78.6756,1974-09-22
+15,United_States_Grand_Prix,watkins_glen,Watkins Glen,New York State,USA,42.3369,-76.9272,1974-10-06

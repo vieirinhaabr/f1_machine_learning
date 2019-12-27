@@ -1,18 +1,18 @@
-Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Date
-1,Brazilian_Grand_Prix,interlagos,Autodromo Jose Carlos Pace,Sao Paulo,Brazil,1995-03-26
-2,Argentine_Grand_Prix,galvez,Autodromo Juan y Oscar Galvez,Buenos Aires,Argentina,1995-04-09
-3,San_Marino_Grand_Prix,imola,Autodromo Enzo e Dino Ferrari,Imola,Italy,1995-04-30
-4,Spanish_Grand_Prix,catalunya,Circuit de Barcelona-Catalunya,Montmelo,Spain,1995-05-14
-5,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,1995-05-28
-6,Canadian_Grand_Prix,villeneuve,Circuit Gilles Villeneuve,Montreal,Canada,1995-06-11
-7,French_Grand_Prix,magny_cours,Circuit de Nevers Magny-Cours,Magny Cours,France,1995-07-02
-8,British_Grand_Prix,silverstone,Silverstone Circuit,Silverstone,UK,1995-07-16
-9,German_Grand_Prix,hockenheimring,Hockenheimring,Hockenheim,Germany,1995-07-30
-10,Hungarian_Grand_Prix,hungaroring,Hungaroring,Budapest,Hungary,1995-08-13
-11,Belgian_Grand_Prix,spa,Circuit de Spa-Francorchamps,Spa,Belgium,1995-08-27
-12,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,1995-09-10
-13,Portuguese_Grand_Prix,estoril,Autodromo do Estoril,Estoril,Portugal,1995-09-24
-14,European_Grand_Prix,nurburgring,Nurburgring,Nurburg,Germany,1995-10-01
-15,Pacific_Grand_Prix,okayama,Okayama International Circuit,Okayama,Japan,1995-10-22
-16,Japanese_Grand_Prix,suzuka,Suzuka Circuit,Suzuka,Japan,1995-10-29
-17,Australian_Grand_Prix,adelaide,Adelaide Street Circuit,Adelaide,Australia,1995-11-12
+Round,Grand Prix,Circuit ID,Circuit Name,City,Country,Latitude,Longitude,Date
+1,Brazilian_Grand_Prix,interlagos,Autodromo Jose Carlos Pace,Sao Paulo,Brazil,-23.7036,-46.6997,1995-03-26
+2,Argentine_Grand_Prix,galvez,Autodromo Juan y Oscar Galvez,Buenos Aires,Argentina,-34.6943,-58.4593,1995-04-09
+3,San_Marino_Grand_Prix,imola,Autodromo Enzo e Dino Ferrari,Imola,Italy,44.3439,11.7167,1995-04-30
+4,Spanish_Grand_Prix,catalunya,Circuit de Barcelona-Catalunya,Montmelo,Spain,41.57,2.26111,1995-05-14
+5,Monaco_Grand_Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,43.7347,7.42056,1995-05-28
+6,Canadian_Grand_Prix,villeneuve,Circuit Gilles Villeneuve,Montreal,Canada,45.5,-73.5228,1995-06-11
+7,French_Grand_Prix,magny_cours,Circuit de Nevers Magny-Cours,Magny Cours,France,46.8642,3.16361,1995-07-02
+8,British_Grand_Prix,silverstone,Silverstone Circuit,Silverstone,UK,52.0786,-1.01694,1995-07-16
+9,German_Grand_Prix,hockenheimring,Hockenheimring,Hockenheim,Germany,49.3278,8.56583,1995-07-30
+10,Hungarian_Grand_Prix,hungaroring,Hungaroring,Budapest,Hungary,47.5789,19.2486,1995-08-13
+11,Belgian_Grand_Prix,spa,Circuit de Spa-Francorchamps,Spa,Belgium,50.4372,5.97139,1995-08-27
+12,Italian_Grand_Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,45.6156,9.28111,1995-09-10
+13,Portuguese_Grand_Prix,estoril,Autodromo do Estoril,Estoril,Portugal,38.7506,-9.39417,1995-09-24
+14,European_Grand_Prix,nurburgring,Nurburgring,Nurburg,Germany,50.3356,6.9475,1995-10-01
+15,Pacific_Grand_Prix,okayama,Okayama International Circuit,Okayama,Japan,34.915,134.221,1995-10-22
+16,Japanese_Grand_Prix,suzuka,Suzuka Circuit,Suzuka,Japan,34.8431,136.541,1995-10-29
+17,Australian_Grand_Prix,adelaide,Adelaide Street Circuit,Adelaide,Australia,-34.9272,138.617,1995-11-12
