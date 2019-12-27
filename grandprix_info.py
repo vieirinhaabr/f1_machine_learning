@@ -627,3 +627,61 @@ class GrandPrix(object):
         # track_status(json)
         # drivers_performance_points(json)
         highest_speed(json)
+
+    # fr changes
+    def regulations_pd_generator(self):
+        # Can Be True or False
+
+        Aerodynamic = []
+        Engine = []
+        Tyres = []
+        Eletronic = []
+        PitStop = []
+        Races = []
+        Weight = []
+        GearBox = []
+        Suspension = []
+        Years = []
+
+        i = 1970
+        while i <= 2021:
+            if i == 1976 or i == 1978 or i == 1981:
+                Aerodynamic.append(True)
+            else:
+                Aerodynamic.append(False)
+            if i == 1981:
+                Engine.append(True)
+            else:
+                Engine.append(False)
+            if i == 1:
+                Tyres.append(True)
+            else:
+                Tyres.append(False)
+            if i == 1:
+                Eletronic.append(True)
+            else:
+                Eletronic.append(False)
+            if i == 1981:
+                PitStop.append(True)
+            else:
+                PitStop.append(False)
+            if i == 1970 or i == 1971 or i == 1974 or i == 1977 or i == 1978 or i == 1981:
+                Races.append(True)
+            else:
+                Races.append(False)
+            if i == 1970 or i == 1972 or i == 1973 or i == 1980 or i == 1981:
+                Weight.append(True)
+            else:
+                Weight.append(False)
+            if i == 1981:
+                GearBox.append(True)
+            else:
+                GearBox.append(False)
+            if i == 1973:
+                Suspension.append(True)
+            else:
+                Suspension.append(False)
+
+            Years.append(i)
+
+            i = i + 1
