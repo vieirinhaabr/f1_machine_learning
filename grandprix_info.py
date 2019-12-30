@@ -52,6 +52,7 @@ class GrandPrix(object):
             if Date_obj[i] < datetime.datetime.now():
                 # METHOD CALLS
                 print(bcolors.PASS + 'STARTING EXTRACTOR, GETTING FROM', GrandPrix[i], 'DATE:', Date[i] + bcolors.END)
+                self.drivers_csv(Round[i], Date_obj[i].year, GrandPrix[i])
                 self.contructors_csv(Round[i], Date_obj[i].year, GrandPrix[i])
                 self.pitstops_times_csv(Round[i], Date_obj[i].year, GrandPrix[i])
                 self.result_csv(Round[i], Date_obj[i].year, GrandPrix[i])
