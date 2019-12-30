@@ -644,40 +644,49 @@ class GrandPrix(object):
         Years = []
 
         i = 1970
-        while i <= 2021:
-            if i == 1976 or i == 1978 or i == 1981:
+        while i <= 2020:
+            if i == 1976 or i == 1978 or i == 1981 or i == 1982 or i == 1983 or i == 1985 or i == 1990 or i == 1991 or \
+                    i == 1993 or i == 1994 or i == 1996 or i == 1998 or i == 1999 or i == 2001 or i == 2004 or i == 2005\
+                    or i == 2009 or i == 2011 or i == 2012 or i == 2015 or i == 2017 or i == 2018 or i == 2019:
                 Aerodynamic.append(True)
             else:
                 Aerodynamic.append(False)
-            if i == 1981:
+            if i == 1981 or i == 1982 or i == 1986 or i == 1987 or i == 1988 or i == 1989 or i == 1994 or i == 1995 or \
+                    i == 2000 or i == 2006 or i == 2007 or i == 2014:
                 Engine.append(True)
             else:
                 Engine.append(False)
-            if i == 1:
+            if i == 1993 or i == 1999 or i == 2004 or i == 2005 or i == 2006 or i == 2007 or i == 2009 or i == 2010:
                 Tyres.append(True)
             else:
                 Tyres.append(False)
-            if i == 1:
+            if i == 1994 or i == 2001 or i == 2003 or i == 2004 or i == 2007 or i == 2008 or i == 2009 or i == 2011 \
+                    or i == 2012 or i == 2014 or i == 2019:
                 Eletronic.append(True)
             else:
                 Eletronic.append(False)
-            if i == 1981:
+            if i == 1981 or i == 1984 or i == 1992 or i == 1994 or i == 1998 or i == 2004 or i == 2009 or i == 2010 \
+                    or i == 2012:
                 PitStop.append(True)
             else:
                 PitStop.append(False)
-            if i == 1970 or i == 1971 or i == 1974 or i == 1977 or i == 1978 or i == 1981:
+            if i == 1970 or i == 1971 or i == 1974 or i == 1977 or i == 1978 or i == 1981 or i == 1984 or i == 1986 or \
+                    i == 1987 or i == 1989 or i == 1990 or i == 1990 or i == 1993 or i == 1994 or i == 1996 or \
+                    i == 1997 or i == 1999 or i == 2002 or i == 2003 or i == 2005 or i == 2006 or i == 2010 or \
+                    i == 2011 or i == 2016:
                 Races.append(True)
             else:
                 Races.append(False)
-            if i == 1970 or i == 1972 or i == 1973 or i == 1980 or i == 1981:
+            if i == 1970 or i == 1972 or i == 1973 or i == 1980 or i == 1981 or i == 1982 or i == 1983 or i == 1984 or \
+                    i == 1987 or i == 1988 or i == 2004 or i == 2013 or i == 2017 or i == 2019:
                 Weight.append(True)
             else:
                 Weight.append(False)
-            if i == 1981:
+            if i == 1981 or i == 1983 or i == 1993 or i == 2001 or i == 2004:
                 GearBox.append(True)
             else:
                 GearBox.append(False)
-            if i == 1973:
+            if i == 1973 or i == 1982:
                 Suspension.append(True)
             else:
                 Suspension.append(False)
@@ -685,3 +694,13 @@ class GrandPrix(object):
             Years.append(i)
 
             i = i + 1
+
+        Regulations_Dict = {'Years': Years, 'Aerodynamic': Aerodynamic, 'Engine': Engine, 'Tyres': Tyres,
+                            'Eletronic': Eletronic, 'PitStop': PitStop, 'Races': Races, 'Weight': Weight,
+                            'GearBox': GearBox, 'Suspension': Suspension}
+
+        Regulations_Data = pd.DataFrame(data=Regulations_Dict)
+        Regulations_Data = Regulations_Data.set_index('Years')
+
+        Path = self.Path.config_path('Regultations')
+        Regulations_Data.to_csv(Path)
