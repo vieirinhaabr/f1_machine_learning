@@ -52,13 +52,12 @@ class GrandPrix(object):
             if Date_obj[i] < datetime.datetime.now():
                 # METHOD CALLS
                 print(bcolors.PASS + 'STARTING EXTRACTOR, GETTING FROM', GrandPrix[i], 'DATE:', Date[i] + bcolors.END)
-                # self.drivers_csv(Round[i], Date_obj[i].year, GrandPrix[i])
-                # self.contructors_csv(Round[i], Date_obj[i].year, GrandPrix[i])
-                # self.pitstops_times_csv(Round[i], Date_obj[i].year, GrandPrix[i])
-                # self.result_csv(Round[i], Date_obj[i].year, GrandPrix[i])
-                # self.by_lap_csv(Round[i], Date_obj[i].year, GrandPrix[i])
-                # self.current_driver_standings(Round[i], Date_obj[i].year, GrandPrix[i])
-                # self.status(Round[i], Date_obj[i].year, GrandPrix[i])
+                self.contructors_csv(Round[i], Date_obj[i].year, GrandPrix[i])
+                self.pitstops_times_csv(Round[i], Date_obj[i].year, GrandPrix[i])
+                self.result_csv(Round[i], Date_obj[i].year, GrandPrix[i])
+                self.by_lap_csv(Round[i], Date_obj[i].year, GrandPrix[i])
+                self.current_driver_standings(Round[i], Date_obj[i].year, GrandPrix[i])
+                self.status(Round[i], Date_obj[i].year, GrandPrix[i])
 
                 if Date_obj[i].year > 2017:
                     url = self.Url.f1_url(Date_obj[i].year, Date_obj[i].date(), GrandPrix[i])
@@ -412,6 +411,8 @@ class GrandPrix(object):
                     return TrackTempData
 
                 def track_temp(json):
+                    print(bcolors.ITALIC + 'GETTING TRACK TEMP FROM F1...', gp_name + bcolors.END)
+
                     json = json['pTrack']
                     TrackTempData = temp_df(json, "Track Temperature")
 
@@ -419,6 +420,8 @@ class GrandPrix(object):
                     TrackTempData.to_csv(Path)
 
                 def air_temp(json):
+                    print(bcolors.ITALIC + 'GETTING AIR TEMP FROM F1...', gp_name + bcolors.END)
+
                     json = json['pAir']
                     TrackTempData = temp_df(json, "Air Temperature")
 
@@ -429,6 +432,8 @@ class GrandPrix(object):
                 air_temp(json)
 
             def is_raining(json):
+                print(bcolors.ITALIC + 'GETTING WEATHER FROM F1...', gp_name + bcolors.END)
+
                 json = json['pRaining']
                 Time, Raining = for_loop_by_time(json)
 
@@ -441,6 +446,8 @@ class GrandPrix(object):
                 TrackTempData.to_csv(Path)
 
             def wind_speed(json):
+                print(bcolors.ITALIC + 'GETTING WIND SPEED FROM F1...', gp_name + bcolors.END)
+
                 json = json['pWind Speed']
 
                 Time, Wind_Speed = for_loop_by_time(json)
@@ -454,6 +461,8 @@ class GrandPrix(object):
                 TrackTempData.to_csv(Path)
 
             def wind_direction(json):
+                print(bcolors.ITALIC + 'GETTING WIND DIRECTION FROM F1...', gp_name + bcolors.END)
+
                 json = json['pWind Dir']
 
                 Time, Wind_Direction = for_loop_by_time(json)
@@ -467,6 +476,8 @@ class GrandPrix(object):
                 TrackTempData.to_csv(Path)
 
             def humidity(json):
+                print(bcolors.ITALIC + 'GETTING HUMIDITY FROM F1...', gp_name + bcolors.END)
+
                 json = json['pHumidity']
 
                 Time, Humidity = for_loop_by_time(json)
@@ -480,6 +491,8 @@ class GrandPrix(object):
                 TrackTempData.to_csv(Path)
 
             def air_pressure(json):
+                print(bcolors.ITALIC + 'GETTING AIR PRESSURE FROM F1...', gp_name + bcolors.END)
+
                 json = json['pPressure']
 
                 Time, Air_Pressure = for_loop_by_time(json)
@@ -500,6 +513,8 @@ class GrandPrix(object):
             air_pressure(weather_data)
 
         def track_status(json):
+            print(bcolors.ITALIC + 'GETTING TRACK STATUS FROM F1...', gp_name + bcolors.END)
+
             json = json['Scores']
             json = json['graph']
             TrackStatusJson = json['TrackStatus']
@@ -534,6 +549,8 @@ class GrandPrix(object):
             TrackStatusData.to_csv(Path)
 
         def drivers_performance_points(json):
+            print(bcolors.ITALIC + 'GETTING DRIVER PERFORMANCE POINTS FROM F1...', gp_name + bcolors.END)
+
             json = json['Scores']
             json = json['graph']
             PF_Points = json['Performance']
@@ -569,31 +586,33 @@ class GrandPrix(object):
             Path = self.Path.grandprix_path(year, gp_name, 'Drivers_Performance')
             DriverPerformanceData.to_csv(Path)
 
+        def order_driver_list(json):
+            json = json['init']
+            json = json['data']
+            Drivers_json = json['Drivers']
+
+            Drivers_InOrder = []
+            Drivers_Dict = {}
+            Drivers_Ordered = []
+
+            for Driver in Drivers_json:
+                Drivers_InOrder.append(Driver['Initials'])
+
+            DriversID = list(pd.read_csv(self.Path.grandprix_path(year, gp_name, "Drivers"))['Driver ID'])
+            DriversInitials = list(pd.read_csv(self.Path.grandprix_path(year, gp_name, "Drivers"))['Driver Initials'])
+
+            i = 0
+            for Driver in DriversInitials:
+                Drivers_Dict[Driver] = DriversID[i]
+                i = i + 1
+
+            for Driver in Drivers_InOrder:
+                Drivers_Ordered.append(Drivers_Dict[Driver])
+
+            return Drivers_Ordered
+
         def highest_speed(json):
-            def order_driver_list(json):
-                json = json['init']
-                json = json['data']
-                Drivers_json = json['Drivers']
-
-                Drivers_InOrder = []
-                Drivers_Dict = {}
-                Drivers_Ordered = []
-
-                for Driver in Drivers_json:
-                    Drivers_InOrder.append(Driver['Initials'])
-
-                DriversID = list(pd.read_csv(self.Path.grandprix_path(year, gp_name, "Drivers"))['Driver ID'])
-                DriversInitials = list(pd.read_csv(self.Path.grandprix_path(year, gp_name, "Drivers"))['Driver Initials'])
-
-                i = 0
-                for Driver in DriversInitials:
-                    Drivers_Dict[Driver] = DriversID[i]
-                    i = i + 1
-
-                for Driver in Drivers_InOrder:
-                    Drivers_Ordered.append(Drivers_Dict[Driver])
-
-                return Drivers_Ordered
+            print(bcolors.ITALIC + 'GETTING HIGHEST SPEED FROM F1...', gp_name + bcolors.END)
 
             temp = json['best']
             temp = temp['data']
@@ -623,13 +642,50 @@ class GrandPrix(object):
             Path = self.Path.grandprix_path(year, gp_name, 'Highest_Speed')
             SpeedData.to_csv(Path)
 
-        # weather(json)
-        # track_status(json)
-        # drivers_performance_points(json)
+        def tyre_types(json):
+            print(bcolors.ITALIC + 'GETTING TYRES HISTORY FROM F1...', gp_name + bcolors.END)
+
+            DriverList = order_driver_list(json)
+            TyresHistory = []
+            Tyres_Dict = {}
+
+            temp = json['xtra']
+            temp = temp['data']
+            Tyres_json = temp['DR']
+
+            temp_lenght = 0
+            for TyreLine in Tyres_json:
+                TyresHistory.append(TyreLine['X'][9])
+                if len(TyreLine['X'][9]) > temp_lenght:
+                    temp_lenght = len(TyreLine['X'][9])
+
+            i = 0
+            for Tyres in TyresHistory:
+                Driver_Tyres = []
+
+                for Tyre in Tyres:
+                    Driver_Tyres.append(Tyre)
+
+                while len(Driver_Tyres) < temp_lenght:
+                    Driver_Tyres.append(None)
+
+                Tyres_Dict[DriverList[i]] = Driver_Tyres
+                i = i + 1
+
+            Tyre_Data = pd.DataFrame(data=Tyres_Dict)
+
+            Path = self.Path.grandprix_path(year, gp_name, 'Tyres_History')
+            Tyre_Data.to_csv(Path)
+
+        weather(json)
+        track_status(json)
+        drivers_performance_points(json)
         highest_speed(json)
+        tyre_types(json)
 
     # fr changes
     def regulations_pd_generator(self):
+        print(bcolors.ITALIC + 'GETTING REGULATIONS OF F1...', + bcolors.END)
         # Can Be True or False
 
         Aerodynamic = []
